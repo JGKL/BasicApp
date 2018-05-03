@@ -20,8 +20,8 @@ namespace BasicApp.Business.ViewModels
 
             ToolbarItems = new List<ToolbarItem>
             {
-                new ToolbarItem("fa-heart", "Heart", "IconOne"),
-                new ToolbarItem("fa-calendar", "Calendar", "IconTwo")
+                new ToolbarItem("fa-heart", "Heart", "IconOne", "Added to your favorites list!"),
+                new ToolbarItem("fa-calendar", "Calendar", "IconTwo", "Added to your agenda!")
             };
         }
 

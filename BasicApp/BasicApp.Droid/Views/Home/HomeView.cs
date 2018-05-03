@@ -23,9 +23,9 @@ namespace BasicApp.Droid.Views.Home
             mTabHost = view.FindViewById<FragmentTabHost>(Resource.Id.tabhost);
             mTabHost.Setup(Activity, ChildFragmentManager, Resource.Id.tabcontent);
 
-            mTabHost.AddTab(mTabHost.NewTabSpec("tab1").SetIndicator("Tab 1", null), Java.Lang.Class.FromType(typeof(FragmentTab)), null);
-            mTabHost.AddTab(mTabHost.NewTabSpec("tab2").SetIndicator("Tab 2", null), Java.Lang.Class.FromType(typeof(FragmentTab)), null);
-            mTabHost.AddTab(mTabHost.NewTabSpec("tab3").SetIndicator("Tab 3", null), Java.Lang.Class.FromType(typeof(FragmentTab)), null);
+            mTabHost.AddTab(mTabHost.NewTabSpec("tab1").SetIndicator("Tab 1", null), Java.Lang.Class.FromType(typeof(FragmentTabOne)), null);
+            mTabHost.AddTab(mTabHost.NewTabSpec("tab2").SetIndicator("Tab 2", null), Java.Lang.Class.FromType(typeof(FragmentTabTwo)), null);
+            mTabHost.AddTab(mTabHost.NewTabSpec("tab3").SetIndicator("Tab 3", null), Java.Lang.Class.FromType(typeof(FragmentTabThree)), null);
 
             AssetManager assets = Application.Context.Assets;
             var font = Typeface.CreateFromAsset(assets, "fontawesome-webfont.ttf");

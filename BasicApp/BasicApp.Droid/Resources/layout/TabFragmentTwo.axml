@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical|center_horizontal"
-        android:text="This is the content of fragment one"
+        android:text="This is the content of fragment two"
         android:textColor="@color/primaryColor"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 </LinearLayout>

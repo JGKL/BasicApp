@@ -3820,17 +3820,14 @@ namespace BasicApp.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0800b1
-			public const int CloseButton = 2131230897;
+			// aapt resource value: 0x7f0800b0
+			public const int CloseButton = 2131230896;
 			
 			// aapt resource value: 0x7f08000f
 			public const int MvvmCrossTagId = 2131230735;
 			
 			// aapt resource value: 0x7f080010
 			public const int MvxBindingTagUnique = 2131230736;
-			
-			// aapt resource value: 0x7f0800ac
-			public const int TabFragmentOne = 2131230892;
 			
 			// aapt resource value: 0x7f080011
 			public const int ToolbarItemOne = 2131230737;
@@ -4093,8 +4090,8 @@ namespace BasicApp.Droid
 			// aapt resource value: 0x7f080094
 			public const int loadingProgressWheel = 2131230868;
 			
-			// aapt resource value: 0x7f0800b0
-			public const int masked = 2131230896;
+			// aapt resource value: 0x7f0800af
+			public const int masked = 2131230895;
 			
 			// aapt resource value: 0x7f08009c
 			public const int media_actions = 2131230876;
@@ -4315,11 +4312,11 @@ namespace BasicApp.Droid
 			// aapt resource value: 0x7f08005c
 			public const int title_template = 2131230812;
 			
-			// aapt resource value: 0x7f0800ad
-			public const int toolbar = 2131230893;
+			// aapt resource value: 0x7f0800ac
+			public const int toolbar = 2131230892;
 			
-			// aapt resource value: 0x7f0800ae
-			public const int toolbar_layout = 2131230894;
+			// aapt resource value: 0x7f0800ad
+			public const int toolbar_layout = 2131230893;
 			
 			// aapt resource value: 0x7f08002e
 			public const int top = 2131230766;
@@ -4345,8 +4342,8 @@ namespace BasicApp.Droid
 			// aapt resource value: 0x7f08000e
 			public const int view_offset_helper = 2131230734;
 			
-			// aapt resource value: 0x7f0800af
-			public const int visible = 2131230895;
+			// aapt resource value: 0x7f0800ae
+			public const int visible = 2131230894;
 			
 			// aapt resource value: 0x7f08002c
 			public const int withText = 2131230764;
@@ -4645,7 +4642,13 @@ namespace BasicApp.Droid
 			public const int TabFragmentOne = 2130903118;
 			
 			// aapt resource value: 0x7f03004f
-			public const int Toolbar = 2130903119;
+			public const int TabFragmentThree = 2130903119;
+			
+			// aapt resource value: 0x7f030050
+			public const int TabFragmentTwo = 2130903120;
+			
+			// aapt resource value: 0x7f030051
+			public const int Toolbar = 2130903121;
 			
 			static Layout()
 			{

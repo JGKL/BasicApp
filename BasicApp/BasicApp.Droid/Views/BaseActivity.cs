@@ -81,8 +81,7 @@ namespace BasicApp.Droid.Views
                 image.SetImageDrawable(icon);
                 image.Click += (sender, args) =>
                 {
-                    RemoveToolbarItems();
-                    UserDialogs.Instance.Toast("Toolbar items verwijderd");
+                    UserDialogs.Instance.Toast(item.ToastText);
                 };
 
                 toolbarLayout.AddView(image);

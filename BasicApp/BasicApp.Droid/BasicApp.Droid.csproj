@@ -179,7 +179,9 @@
     <Compile Include="Utilities\Adapters\HomeAdapter.cs" />
     <Compile Include="Utilities\Adapters\MenuAdapter.cs" />
     <Compile Include="Utilities\Controls\CustomRadioGroupSelectedIndexBinding.cs" />
-    <Compile Include="Utilities\Controls\FragmentTab.cs" />
+    <Compile Include="Utilities\Controls\FragmentTabThree.cs" />
+    <Compile Include="Utilities\Controls\FragmentTabTwo.cs" />
+    <Compile Include="Utilities\Controls\FragmentTabOne.cs" />
     <Compile Include="Utilities\Converters\IconConverter.cs" />
     <Compile Include="Utilities\Helpers\FragmentTypeLookup.cs" />
     <Compile Include="Utilities\Presenter\CustomPresenter.cs" />
@@ -239,6 +241,12 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\FragmentContainer.axml" />
     <AndroidResource Include="Resources\layout\TabFragmentOne.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\TabFragmentThree.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\TabFragmentTwo.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
