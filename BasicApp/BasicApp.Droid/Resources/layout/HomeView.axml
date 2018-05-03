@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lightGrey">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="169.5dp"
+        android:background="@color/primaryColor"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <TextView
+            android:text="Welcome, world!"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/homeSmallTitle"
+            android:textColor="@color/white"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="33.5dp" />
+        <FrameLayout
+            android:id="@+id/beginButton"
+            android:layout_height="50dp"
+            android:layout_width="85dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:background="@drawable/rounded_rectangle">
+            <TextView
+                android:textAllCaps="true"
+                android:text="Begin &#xF13A;"
+                android:textSize="17dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/beginTitle"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent" />
+        </FrameLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/stepOne"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/secondaryColor">
+        <android.support.v4.app.FragmentTabHost
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/tabhost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TabWidget
+                    android:id="@+id/tabs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom" />
+                <FrameLayout
+                    android:id="@+id/tabcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0" />
+            </LinearLayout>
+        </android.support.v4.app.FragmentTabHost>
+    </RelativeLayout>
+</LinearLayout>

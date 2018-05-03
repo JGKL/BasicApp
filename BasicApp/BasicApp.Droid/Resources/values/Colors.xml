@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <item name="lightGrey" type="color">#efeff4</item>
+    <item name="grey" type="color">#A3A3A3</item>
+    <item name="white" type="color">#FFFFFF</item>
+    <item name="black" type="color">#000000</item>
+    <item name="background" type="color">#E0E0E0</item>
+    <item name="primaryColor" type="color">#F7882F</item>
+    <item name="secondaryColor" type="color">#6B7A8F</item>
+    <item name="white_transparent" type="color">#99FFFFFF</item>
+    <item name="darkRed" type="color">#AF000E</item>
+    <item name="green" type="color">#90EE90</item>
+    <item name="yellow" type="color">#F7C331</item>
+    <item name="applecore" type="color">#DCC7AA</item>
+</resources>
