@@ -177,6 +177,7 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Utilities\Adapters\BaseAdapter.cs" />
     <Compile Include="Utilities\Adapters\HomeAdapter.cs" />
+    <Compile Include="Utilities\Adapters\HomeFragmentPagerAdapter.cs" />
     <Compile Include="Utilities\Adapters\MenuAdapter.cs" />
     <Compile Include="Utilities\Controls\CustomRadioGroupSelectedIndexBinding.cs" />
     <Compile Include="Utilities\Controls\FragmentTabThree.cs" />
