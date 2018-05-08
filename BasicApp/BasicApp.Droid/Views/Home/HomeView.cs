@@ -1,12 +1,11 @@
 ﻿using Fragment = Android.Support.V4.App.Fragment;
 using MvvmCross.Binding.Droid.BindingContext;
 using BasicApp.Droid.Utilities.Adapters;
-using BasicApp.Droid.Utilities.Controls;
+using BasicApp.Droid.Views.Home.Tabs;
 using BasicApp.Business.ViewModels;
 using System.Collections.Generic;
 using Android.Support.V4.View;
 using Android.Support.V4.App;
-using Android.Content.Res;
 using Android.Graphics;
 using Android.Widget;
 using Android.Views;
@@ -18,17 +17,24 @@ namespace BasicApp.Droid.Views.Home
 {
     public class HomeView : BaseFragment<HomeViewModel>, ViewPager.IOnPageChangeListener, TabHost.IOnTabChangeListener
     {
-        private FragmentTabHost mTabHost;
-        private ViewPager viewPager;
-        private HomeFragmentPagerAdapter adapter;
+        private readonly List<string> _tabs;
 
-        private List<string> tabs;
-        private int currentTab;
+        private HomeFragmentPagerAdapter _homeFragmentPagerAdapter;
+        private FragmentTabHost _fragmentTabHost;
+        private ViewPager _viewPager;
+
+        private readonly Typeface _fontAwesomeTypeFace;
+
+        private int _currentTab;
+        private int _scrollState;
 
         public HomeView()
         {
-            tabs = new List<string> {"tab1", "tab2", "tab3"};
-            currentTab = 0;
+            _tabs = new List<string> {"tab1", "tab2", "tab3"};
+            _currentTab = 0;
+
+            var assets = Application.Context.Assets;
+            _fontAwesomeTypeFace = Typeface.CreateFromAsset(assets, "fontawesome-webfont.ttf");
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -36,64 +42,67 @@ namespace BasicApp.Droid.Views.Home
             base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(Resource.Layout.HomeView, null);
 
-            mTabHost = view.FindViewById<FragmentTabHost>(Resource.Id.tabhost);
-            mTabHost.SetOnTabChangedListener(this);
-
-            viewPager = view.FindViewById<ViewPager>(Resource.Id.viewpager);
-            viewPager.AddOnPageChangeListener(this);
-
+            _fragmentTabHost = view.FindViewById<FragmentTabHost>(Resource.Id.tabhost);
+            _fragmentTabHost.SetOnTabChangedListener(this);
             var fragments = new List<Fragment>
             {
                 Instantiate(Context, Class.FromType(typeof(FragmentTabOne)).Name),
                 Instantiate(Context, Class.FromType(typeof(FragmentTabTwo)).Name),
                 Instantiate(Context, Class.FromType(typeof(FragmentTabThree)).Name)
             };
-            adapter = new HomeFragmentPagerAdapter(FragmentManager, fragments);
-            viewPager.Adapter = adapter;
+            _homeFragmentPagerAdapter = new HomeFragmentPagerAdapter(ChildFragmentManager, fragments);
 
-            mTabHost.Setup(Activity, ChildFragmentManager, Resource.Id.tabcontent);
+            _viewPager = view.FindViewById<ViewPager>(Resource.Id.viewpager);
+            _viewPager.AddOnPageChangeListener(this);
+            _viewPager.Adapter = _homeFragmentPagerAdapter;
 
-            mTabHost.AddTab(mTabHost.NewTabSpec("tab1").SetIndicator("Tab 1", null), Class.FromType(typeof(FragmentTabOne)), null);
-            mTabHost.AddTab(mTabHost.NewTabSpec("tab2").SetIndicator("Tab 2", null), Class.FromType(typeof(FragmentTabTwo)), null);
-            mTabHost.AddTab(mTabHost.NewTabSpec("tab3").SetIndicator("Tab 3", null), Class.FromType(typeof(FragmentTabThree)), null);
+            _fragmentTabHost.Setup(Activity, ChildFragmentManager, Resource.Id.tabcontent);
+            _fragmentTabHost.AddTab(_fragmentTabHost.NewTabSpec("tab1").SetIndicator(GetTabIndicator(inflater, "\uf200")), Class.FromType(typeof(FragmentTabOne)), null);
+            _fragmentTabHost.AddTab(_fragmentTabHost.NewTabSpec("tab2").SetIndicator(GetTabIndicator(inflater, "\uf135")), Class.FromType(typeof(FragmentTabTwo)), null);
+            _fragmentTabHost.AddTab(_fragmentTabHost.NewTabSpec("tab3").SetIndicator(GetTabIndicator(inflater, "\uf2dc")), Class.FromType(typeof(FragmentTabThree)), null);
 
-            AssetManager assets = Application.Context.Assets;
-            var font = Typeface.CreateFromAsset(assets, "fontawesome-webfont.ttf");
+            ((BaseActivity)Activity).CreateToolbarItemView(ViewModel.ToolbarItems);
 
-            var baseViewModel = ViewModel as HomeViewModel;
-            ((BaseActivity)Activity).CreateToolbarItemView(baseViewModel.ToolbarItems);
-
-            var textView = view.FindViewById<TextView>(Resource.Id.beginTitle);
-            textView.SetTypeface(font, TypefaceStyle.Normal);
+            var beginTitleTextView = view.FindViewById<TextView>(Resource.Id.beginTitle);
+            beginTitleTextView.SetTypeface(_fontAwesomeTypeFace, TypefaceStyle.Normal);
 
             return view;
         }
 
-        public void OnPageScrolled(int position, float positionOffset, int positionOffsetPixels)
+        private View GetTabIndicator(LayoutInflater inflater, string title)
         {
-            if (position == currentTab)
+            var tabLayoutView = inflater.Inflate(Resource.Drawable.tab_layout, null);
+            var textView = tabLayoutView.FindViewById<TextView>(Resource.Id.textView);
+            textView.SetText(title.ToCharArray(), 0, title.Length);
+            textView.SetTypeface(_fontAwesomeTypeFace, TypefaceStyle.Normal);
+            return tabLayoutView;
+        }
+
+        public void OnPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+
+        public void OnPageScrollStateChanged(int state) { }
+
+        public void OnPageSelected(int position)
+        {
+            if (position == _currentTab)
                 return;
 
-            currentTab = position;
+            _currentTab = position;
 
-            var tag = tabs[position];
-            mTabHost.SetCurrentTabByTag(tag);
+            var tag = _tabs[position];
+            _fragmentTabHost.SetCurrentTabByTag(tag);
         }
 
         public void OnTabChanged(string tabId)
         {
-            var index = tabs.IndexOf(tabId);
+            var index = _tabs.IndexOf(tabId);
 
-            if (index == currentTab)
+            if (index == _currentTab)
                 return;
 
-            currentTab = index;
+            _currentTab = index;
 
-            viewPager.SetCurrentItem(index, true);
+            _viewPager.SetCurrentItem(index, true);
         }
-
-        public void OnPageScrollStateChanged(int state) { }
-
-        public void OnPageSelected(int position) { }
     }
 }

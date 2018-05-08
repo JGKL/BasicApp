@@ -3684,26 +3684,26 @@ namespace BasicApp.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020077
-			public const int avd_hide_password_1 = 2130837623;
+			// aapt resource value: 0x7f02007b
+			public const int avd_hide_password_1 = 2130837627;
 			
-			// aapt resource value: 0x7f020078
-			public const int avd_hide_password_2 = 2130837624;
+			// aapt resource value: 0x7f02007c
+			public const int avd_hide_password_2 = 2130837628;
 			
-			// aapt resource value: 0x7f020079
-			public const int avd_hide_password_3 = 2130837625;
+			// aapt resource value: 0x7f02007d
+			public const int avd_hide_password_3 = 2130837629;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f02007a
-			public const int avd_show_password_1 = 2130837626;
+			// aapt resource value: 0x7f02007e
+			public const int avd_show_password_1 = 2130837630;
 			
-			// aapt resource value: 0x7f02007b
-			public const int avd_show_password_2 = 2130837627;
+			// aapt resource value: 0x7f02007f
+			public const int avd_show_password_2 = 2130837631;
 			
-			// aapt resource value: 0x7f02007c
-			public const int avd_show_password_3 = 2130837628;
+			// aapt resource value: 0x7f020080
+			public const int avd_show_password_3 = 2130837632;
 			
 			// aapt resource value: 0x7f020055
 			public const int borderbottom = 2130837589;
@@ -3777,11 +3777,11 @@ namespace BasicApp.Droid
 			// aapt resource value: 0x7f02006c
 			public const int notification_icon_background = 2130837612;
 			
-			// aapt resource value: 0x7f020075
-			public const int notification_template_icon_bg = 2130837621;
+			// aapt resource value: 0x7f020079
+			public const int notification_template_icon_bg = 2130837625;
 			
-			// aapt resource value: 0x7f020076
-			public const int notification_template_icon_low_bg = 2130837622;
+			// aapt resource value: 0x7f02007a
+			public const int notification_template_icon_low_bg = 2130837626;
 			
 			// aapt resource value: 0x7f02006d
 			public const int notification_tile_bg = 2130837613;
@@ -3807,6 +3807,18 @@ namespace BasicApp.Droid
 			// aapt resource value: 0x7f020074
 			public const int sample_icon = 2130837620;
 			
+			// aapt resource value: 0x7f020075
+			public const int tab_indicator = 2130837621;
+			
+			// aapt resource value: 0x7f020076
+			public const int tab_layout = 2130837622;
+			
+			// aapt resource value: 0x7f020077
+			public const int tab_selected = 2130837623;
+			
+			// aapt resource value: 0x7f020078
+			public const int tab_unselected = 2130837624;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -3820,8 +3832,8 @@ namespace BasicApp.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0800b1
-			public const int CloseButton = 2131230897;
+			// aapt resource value: 0x7f0800b2
+			public const int CloseButton = 2131230898;
 			
 			// aapt resource value: 0x7f08000f
 			public const int MvvmCrossTagId = 2131230735;
@@ -4287,6 +4299,9 @@ namespace BasicApp.Droid
 			
 			// aapt resource value: 0x7f080056
 			public const int textSpacerNoTitle = 2131230806;
+			
+			// aapt resource value: 0x7f0800b1
+			public const int textView = 2131230897;
 			
 			// aapt resource value: 0x7f080093
 			public const int textViewStatus = 2131230867;
@@ -4795,18 +4810,6 @@ namespace BasicApp.Droid
 			
 			// aapt resource value: 0x7f090023
 			public const int character_counter_pattern = 2131296291;
-			
-			// aapt resource value: 0x7f09002e
-			public const int fa_heart = 2131296302;
-			
-			// aapt resource value: 0x7f09002f
-			public const int fa_icon_areachart = 2131296303;
-			
-			// aapt resource value: 0x7f090031
-			public const int fa_icon_linechart = 2131296305;
-			
-			// aapt resource value: 0x7f090030
-			public const int fa_icon_piechart = 2131296304;
 			
 			// aapt resource value: 0x7f09002b
 			public const int library_name = 2131296299;

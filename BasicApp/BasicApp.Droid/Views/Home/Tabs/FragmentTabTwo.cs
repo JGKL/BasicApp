@@ -2,7 +2,7 @@
 using Android.Views;
 using Android.OS;
 
-namespace BasicApp.Droid.Utilities.Controls
+namespace BasicApp.Droid.Views.Home.Tabs
 {
     public class FragmentTabTwo : Fragment
     {

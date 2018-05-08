@@ -180,9 +180,9 @@
     <Compile Include="Utilities\Adapters\HomeFragmentPagerAdapter.cs" />
     <Compile Include="Utilities\Adapters\MenuAdapter.cs" />
     <Compile Include="Utilities\Controls\CustomRadioGroupSelectedIndexBinding.cs" />
-    <Compile Include="Utilities\Controls\FragmentTabThree.cs" />
-    <Compile Include="Utilities\Controls\FragmentTabTwo.cs" />
-    <Compile Include="Utilities\Controls\FragmentTabOne.cs" />
+    <Compile Include="Views\Home\Tabs\FragmentTabThree.cs" />
+    <Compile Include="Views\Home\Tabs\FragmentTabTwo.cs" />
+    <Compile Include="Views\Home\Tabs\FragmentTabOne.cs" />
     <Compile Include="Utilities\Converters\IconConverter.cs" />
     <Compile Include="Utilities\Helpers\FragmentTypeLookup.cs" />
     <Compile Include="Utilities\Presenter\CustomPresenter.cs" />
@@ -338,6 +338,18 @@
       <Project>{f7e54c79-e35f-48f7-961f-6ed273be0422}</Project>
       <Name>BasicApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\tab_indicator.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\tab_layout.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\tab_selected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\tab_unselected.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
