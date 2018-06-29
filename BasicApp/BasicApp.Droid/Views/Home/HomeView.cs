@@ -15,7 +15,7 @@ using Java.Lang;
 
 namespace BasicApp.Droid.Views.Home
 {
-    public class HomeView : BaseFragment<HomeViewModel>, ViewPager.IOnPageChangeListener, TabHost.IOnTabChangeListener
+    public class HomeView : BaseFragment<HomeViewModel>, ViewPager.IOnPageChangeListener, TabHost.IOnTabChangeListener, View.IOnClickListener
     {
         private readonly List<string> _tabs;
 
@@ -26,7 +26,6 @@ namespace BasicApp.Droid.Views.Home
         private readonly Typeface _fontAwesomeTypeFace;
 
         private int _currentTab;
-        private int _scrollState;
 
         public HomeView()
         {
@@ -41,6 +40,9 @@ namespace BasicApp.Droid.Views.Home
         {
             base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(Resource.Layout.HomeView, null);
+
+            var niks = view.FindViewById<FrameLayout>(Resource.Id.beginButton);
+            niks.SetOnClickListener(this);
 
             _fragmentTabHost = view.FindViewById<FragmentTabHost>(Resource.Id.tabhost);
             _fragmentTabHost.SetOnTabChangedListener(this);
@@ -103,6 +105,11 @@ namespace BasicApp.Droid.Views.Home
             _currentTab = index;
 
             _viewPager.SetCurrentItem(index, true);
+        }
+
+        public void OnClick(View v)
+        {
+            ViewModel.BeginButtonCommand.Execute();
         }
     }
 }

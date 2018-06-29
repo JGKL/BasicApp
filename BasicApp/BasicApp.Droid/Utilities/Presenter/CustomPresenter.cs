@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using BasicApp.Droid.Utilities.Helpers;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Support.V4;
@@ -13,7 +15,7 @@ namespace BasicApp.Droid.Utilities.Presenter
         private readonly IFragmentTypeLookup _fragmentTypeLookup;
         private Android.Support.V4.App.FragmentManager _fragmentManager;
 
-        public CustomPresenter(IMvxViewModelLoader viewModelLoader, IFragmentTypeLookup fragmentTypeLookup)
+        public CustomPresenter(IMvxViewModelLoader viewModelLoader, IFragmentTypeLookup fragmentTypeLookup) : base(new List<Assembly>())
         {
             _fragmentTypeLookup = fragmentTypeLookup;
             _viewModelLoader = viewModelLoader;

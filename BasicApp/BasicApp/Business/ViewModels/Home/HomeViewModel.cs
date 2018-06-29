@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using BasicApp.Business.Models;
 using MvvmCross.Core.ViewModels;
 
@@ -33,6 +34,14 @@ namespace BasicApp.Business.ViewModels
                 {
                     ShowViewModel<ItemViewModel, HomeItem>(homeItem);
                 });
+            }
+        }
+
+        public IMvxCommand BeginButtonCommand
+        {
+            get
+            {
+                return new MvxCommand(() => { ShowViewModel<SettingsViewModel>(); });
             }
         }
 
