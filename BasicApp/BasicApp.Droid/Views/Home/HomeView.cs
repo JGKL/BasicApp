@@ -12,6 +12,7 @@ using Android.Views;
 using Android.App;
 using Android.OS;
 using Java.Lang;
+using Android.Animation;
 
 namespace BasicApp.Droid.Views.Home
 {
@@ -22,6 +23,8 @@ namespace BasicApp.Droid.Views.Home
         private HomeFragmentPagerAdapter _homeFragmentPagerAdapter;
         private FragmentTabHost _fragmentTabHost;
         private ViewPager _viewPager;
+
+        private Animator _animator;
 
         private readonly Typeface _fontAwesomeTypeFace;
 
@@ -41,8 +44,8 @@ namespace BasicApp.Droid.Views.Home
             base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(Resource.Layout.HomeView, null);
 
-            var niks = view.FindViewById<FrameLayout>(Resource.Id.beginButton);
-            niks.SetOnClickListener(this);
+            var beginButton = view.FindViewById<FrameLayout>(Resource.Id.beginButton);
+            beginButton.SetOnClickListener(this);
 
             _fragmentTabHost = view.FindViewById<FragmentTabHost>(Resource.Id.tabhost);
             _fragmentTabHost.SetOnTabChangedListener(this);
@@ -109,7 +112,16 @@ namespace BasicApp.Droid.Views.Home
 
         public void OnClick(View v)
         {
-            ViewModel.BeginButtonCommand.Execute();
+            _animator.Start();
+        }
+
+        public void OnAnimationUpdate(ValueAnimator animation)
+        {
+            var homeTopSide = View.FindViewById<RelativeLayout>(Resource.Id.homeTopSide);
+            var val = (int) animation.AnimatedValue;
+            ViewGroup.LayoutParams layoutParams = homeTopSide.LayoutParameters;
+            layoutParams.Height = val;
+            homeTopSide.LayoutParameters = layoutParams;
         }
     }
 }

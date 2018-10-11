@@ -5,7 +5,6 @@ using BasicApp.Droid.Utilities.Helpers;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Droid.Views;
-using BasicApp.Droid.Views.Settings;
 
 namespace BasicApp.Droid.Utilities.Presenter
 {
@@ -63,8 +62,7 @@ namespace BasicApp.Droid.Utilities.Presenter
             if (addToBackStack)
                 transaction.AddToBackStack(fragment.GetType().Name);
 
-            if(fragment.GetType() == typeof(SettingsView))
-                transaction.SetCustomAnimations(Resource.Layout.enter_from_right, Resource.Layout.exit_to_right);
+            //transaction.SetCustomAnimations(Resource.Layout.enter_from_right, Resource.Layout.exit_to_right);
 
             transaction.Replace(Resource.Id.contentFrame, fragment).Commit();
         }

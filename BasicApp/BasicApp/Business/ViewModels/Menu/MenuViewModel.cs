@@ -32,8 +32,7 @@ namespace BasicApp.Business.ViewModels
             MenuItems = new List<object>
             {
                 new MenuHeader("Michael Scott"),
-                new MenuItem("Home", typeof(HomeViewModel)),
-                new MenuItem("Settings", typeof(SettingsViewModel))
+                new MenuItem("Home", typeof(HomeViewModel))
             };
         }
 

@@ -41,7 +41,7 @@ namespace BasicApp.Business.ViewModels
         {
             get
             {
-                return new MvxCommand(() => { ShowViewModel<SettingsViewModel>(); });
+                return new MvxCommand(() => { });
             }
         }
 

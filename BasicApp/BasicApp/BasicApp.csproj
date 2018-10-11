@@ -41,7 +41,6 @@
     <Compile Include="Business\Models\MenuItem.cs" />
     <Compile Include="Business\Models\ToolbarItem.cs" />
     <Compile Include="Business\ViewModels\Item\ItemViewModel.cs" />
-    <Compile Include="Business\ViewModels\Settings\SettingsViewModel.cs" />
     <Compile Include="Business\ViewModels\Shared\MenuItemViewModel.cs" />
     <Compile Include="Business\Services\DatabaseService.cs" />
     <Compile Include="Business\ViewModels\BaseViewModel.cs" />
