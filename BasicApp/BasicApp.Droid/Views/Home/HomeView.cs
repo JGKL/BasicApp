@@ -7,16 +7,16 @@ using System.Collections.Generic;
 using Android.Support.V4.View;
 using Android.Support.V4.App;
 using Android.Graphics;
+using Android.Animation;
 using Android.Widget;
 using Android.Views;
 using Android.App;
 using Android.OS;
 using Java.Lang;
-using Android.Animation;
 
 namespace BasicApp.Droid.Views.Home
 {
-    public class HomeView : BaseFragment<HomeViewModel>, ViewPager.IOnPageChangeListener, TabHost.IOnTabChangeListener, View.IOnClickListener
+    public class HomeView : BaseFragment<HomeViewModel>, ViewPager.IOnPageChangeListener, TabHost.IOnTabChangeListener, View.IOnClickListener, ValueAnimator.IAnimatorUpdateListener, View.IOnLayoutChangeListener
     {
         private readonly List<string> _tabs;
 
@@ -24,7 +24,7 @@ namespace BasicApp.Droid.Views.Home
         private FragmentTabHost _fragmentTabHost;
         private ViewPager _viewPager;
 
-        private Animator _animator;
+        private ValueAnimator _animator;
 
         private readonly Typeface _fontAwesomeTypeFace;
 
@@ -70,6 +70,9 @@ namespace BasicApp.Droid.Views.Home
 
             var beginTitleTextView = view.FindViewById<TextView>(Resource.Id.beginTitle);
             beginTitleTextView.SetTypeface(_fontAwesomeTypeFace, TypefaceStyle.Normal);
+
+            var homeTopSide = view.FindViewById<RelativeLayout>(Resource.Id.homeTopSide);
+            homeTopSide.AddOnLayoutChangeListener(this);
 
             return view;
         }
@@ -122,6 +125,13 @@ namespace BasicApp.Droid.Views.Home
             ViewGroup.LayoutParams layoutParams = homeTopSide.LayoutParameters;
             layoutParams.Height = val;
             homeTopSide.LayoutParameters = layoutParams;
+        }
+
+        public void OnLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom)
+        {
+            _animator = ValueAnimator.OfInt(v.Height, 300);
+            _animator.AddUpdateListener(this);
+            _animator.SetDuration(500);
         }
     }
 }

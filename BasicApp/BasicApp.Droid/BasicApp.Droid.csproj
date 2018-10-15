@@ -184,10 +184,8 @@
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Utilities\Adapters\BaseAdapter.cs" />
-    <Compile Include="Utilities\Adapters\HomeAdapter.cs" />
     <Compile Include="Utilities\Adapters\HomeFragmentPagerAdapter.cs" />
     <Compile Include="Utilities\Adapters\MenuAdapter.cs" />
-    <Compile Include="Utilities\Controls\CustomRadioGroupSelectedIndexBinding.cs" />
     <Compile Include="Views\Home\Tabs\FragmentTabThree.cs" />
     <Compile Include="Views\Home\Tabs\FragmentTabTwo.cs" />
     <Compile Include="Views\Home\Tabs\FragmentTabOne.cs" />
@@ -197,7 +195,6 @@
     <Compile Include="Views\BaseActivity.cs" />
     <Compile Include="Views\BaseFragment.cs" />
     <Compile Include="Views\Home\HomeView.cs" />
-    <Compile Include="Views\Login\LoginView.cs" />
     <Compile Include="Views\MenuBaseActivity.cs" />
     <Compile Include="Views\Menu\MenuView.cs" />
   </ItemGroup>
@@ -223,9 +220,6 @@
     <AndroidResource Include="Resources\layout\Item_MenuHeader.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\LoginView.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\drawable\borderbottom.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -233,18 +227,6 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\menu_closemodal.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\HomeView.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\HomeItem.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\ItemView.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\FragmentLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\FragmentContainer.axml" />
@@ -303,16 +285,10 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\img.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\sample_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\divider.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_info.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Ids.xml" />
@@ -357,6 +333,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\tab_unselected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\RecyclerViewItem.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\HomeView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

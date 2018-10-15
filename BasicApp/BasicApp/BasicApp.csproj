@@ -40,6 +40,7 @@
     <Compile Include="Business\Models\MenuHeader.cs" />
     <Compile Include="Business\Models\MenuItem.cs" />
     <Compile Include="Business\Models\ToolbarItem.cs" />
+    <Compile Include="Business\ViewModels\Home\Tabs\FragmentTabOneViewModel.cs" />
     <Compile Include="Business\ViewModels\Item\ItemViewModel.cs" />
     <Compile Include="Business\ViewModels\Shared\MenuItemViewModel.cs" />
     <Compile Include="Business\Services\DatabaseService.cs" />

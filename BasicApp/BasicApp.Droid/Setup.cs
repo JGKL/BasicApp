@@ -2,10 +2,9 @@
 using Android.Widget;
 using BasicApp.Business.ViewModels;
 using BasicApp.Droid.Services;
-using BasicApp.Droid.Utilities.Controls;
 using BasicApp.Droid.Utilities.Helpers;
 using BasicApp.Droid.Utilities.Presenter;
-using BasicApp.Droid.Views.Login;
+using BasicApp.Droid.Views.Home;
 using BasicApp.Interfaces;
 using MvvmCross.Binding.Bindings.Target.Construction;
 using MvvmCross.Core.ViewModels;
@@ -61,13 +60,13 @@ namespace BasicApp.Droid
         {
             base.FillTargetFactories(registry);
 
-            registry.RegisterFactory(new MvxCustomBindingFactory<RadioGroup>("SelectedIndex", (radioGroup) => new CustomRadioGroupSelectedIndexBinding(radioGroup)));
+            //registry.RegisterFactory(new MvxCustomBindingFactory<RadioGroup>("SelectedIndex", (radioGroup) => new CustomRadioGroupSelectedIndexBinding(radioGroup)));
         }
 
         protected override void InitializeViewLookup()
         {
             var viewModelViewLookup = new Dictionary<Type, Type>();
-            var views = typeof(LoginView).Assembly.GetExportedTypes().Where(x => x.Name.EndsWith("View", StringComparison.CurrentCulture)).ToList();
+            var views = typeof(HomeView).Assembly.GetExportedTypes().Where(x => x.Name.EndsWith("View", StringComparison.CurrentCulture)).ToList();
             var viewModels = typeof(LoginViewModel).Assembly.GetExportedTypes().Where(x => x.Name.EndsWith("ViewModel", StringComparison.CurrentCulture)).ToList();
 
             foreach (var viewModel in viewModels)
