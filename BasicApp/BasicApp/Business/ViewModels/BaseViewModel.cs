@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using MvvmCross.Core.ViewModels;
 using Newtonsoft.Json;
-using BasicApp.Business.Models;
 
 namespace BasicApp.Business.ViewModels
 {
@@ -16,8 +15,8 @@ namespace BasicApp.Business.ViewModels
         /// <summary>
         /// The toolbar items
         /// </summary>
-        List<ToolbarItem> _toolbarItems;
-        public List<ToolbarItem> ToolbarItems
+        List<ToolbarItemViewModel> _toolbarItems;
+        public List<ToolbarItemViewModel> ToolbarItems
         {
             get
             {

@@ -2,17 +2,17 @@
 
 namespace BasicApp.Business.ViewModels.Shared
 {
-    public class MenuItemViewModel
+    public class MenuItemViewModel : BaseViewModel
     {
-        public MenuItemViewModel(string displayName, Type viewModelType, string icon = "")
+        public MenuItemViewModel(string label, Type navigationType, string icon = "")
         {
-            DisplayName = displayName;
-            ViewModelType = viewModelType;
+            Label = label;
+            NavigationType = navigationType;
             Icon = icon;
         }
 
-        public string DisplayName { get; private set; }
-        public Type ViewModelType { get; private set; }
+        public string Label { get; private set; }
+        public Type NavigationType { get; private set; }
         public string Icon { get; private set; }
     }
 }

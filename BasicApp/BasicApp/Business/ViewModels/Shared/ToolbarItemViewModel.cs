@@ -1,11 +1,8 @@
-﻿using System;
-using MvvmCross.Core.ViewModels;
-
-namespace BasicApp.Business.Models
+﻿namespace BasicApp.Business.ViewModels
 {
-    public class ToolbarItem
+    public  class ToolbarItemViewModel
     {
-        public ToolbarItem(string icon, string text, string identifier, string toastText)
+        public ToolbarItemViewModel(string icon, string text, string identifier, string toastText)
         {
             Icon = icon;
             Text = text;

@@ -84,7 +84,7 @@ namespace BasicApp.Business.Services
 
         void CreateTables()
         {
-            _databaseConnection.CreateTable<MenuItem>();
+            
         }
 
         /// <summary>

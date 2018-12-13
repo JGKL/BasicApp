@@ -15,9 +15,9 @@ namespace BasicApp.Droid.Utilities.Adapters
             if (dataContext == null)
                 return base.GetBindableView(convertView, dataContext, parent, templateId);
 
-            if (dataContext is MenuItem)
+            if (dataContext is MenuItemViewModel)
                 templateId = Resource.Layout.Item_MenuItem;
-            else if (dataContext is MenuHeader)
+            else if (dataContext is MenuHeaderViewModel)
                 templateId = Resource.Layout.Item_MenuHeader;
 
             return base.GetBindableView(convertView, dataContext, parent, templateId);

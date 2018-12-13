@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using BasicApp.Business.Models;
 using MvvmCross.Core.ViewModels;
 
@@ -11,30 +10,11 @@ namespace BasicApp.Business.ViewModels
         {
             Title = "Home";
 
-            HomeItems = new List<HomeItem>
+            ToolbarItems = new List<ToolbarItemViewModel>
             {
-                new HomeItem("Home item één"),
-                new HomeItem("Home item twee"),
-                new HomeItem("Home item drie"),
-                new HomeItem("Home item vier")
+                new ToolbarItemViewModel("fa-heart", "Heart", "IconOne", "Added to your favorites list!"),
+                new ToolbarItemViewModel("fa-calendar", "Calendar", "IconTwo", "Added to your agenda!")
             };
-
-            ToolbarItems = new List<ToolbarItem>
-            {
-                new ToolbarItem("fa-heart", "Heart", "IconOne", "Added to your favorites list!"),
-                new ToolbarItem("fa-calendar", "Calendar", "IconTwo", "Added to your agenda!")
-            };
-        }
-
-        public IMvxCommand ItemClickCommand
-        {
-            get
-            {
-                return new MvxCommand<HomeItem>(homeItem =>
-                {
-                    ShowViewModel<ItemViewModel, HomeItem>(homeItem);
-                });
-            }
         }
 
         public IMvxCommand BeginButtonCommand
@@ -42,20 +22,6 @@ namespace BasicApp.Business.ViewModels
             get
             {
                 return new MvxCommand(() => { });
-            }
-        }
-
-        private List<HomeItem> _homeItems;
-        public List<HomeItem> HomeItems
-        {
-            get
-            {
-                return _homeItems;
-            }
-            set
-            {
-                _homeItems = value;
-                RaisePropertyChanged(() => HomeItems);
             }
         }
     }

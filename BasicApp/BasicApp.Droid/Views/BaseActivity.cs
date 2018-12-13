@@ -2,11 +2,11 @@
 using Android.Widget;
 using Acr.UserDialogs;
 using Android.Views;
-using BasicApp.Business.Models;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Droid.Platform;
 using Plugin.Iconize.Droid.Controls;
 using System.Collections.Generic;
+using BasicApp.Business.ViewModels;
 
 namespace BasicApp.Droid.Views
 {
@@ -14,7 +14,7 @@ namespace BasicApp.Droid.Views
     {
         private int _toolbarItemCount;
         private readonly IMvxAndroidCurrentTopActivity _topActivity;
-        private List<ToolbarItem> _toolbarItems = null;
+        private List<ToolbarItemViewModel> _toolbarItems = null;
 
         public BaseActivity()
         {
@@ -36,7 +36,7 @@ namespace BasicApp.Droid.Views
             toolbarLayout.RemoveAllViews();
         }
 
-        public void CreateToolbarItemView(List<ToolbarItem> toolbarItems)
+        public void CreateToolbarItemView(List<ToolbarItemViewModel> toolbarItems)
         {
             RemoveToolbarItems();
 

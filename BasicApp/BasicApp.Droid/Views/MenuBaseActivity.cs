@@ -3,6 +3,7 @@ using Android.OS;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using BasicApp.Business.Models;
+using BasicApp.Business.ViewModels.Shared;
 using BasicApp.Droid.Utilities.Adapters;
 using BasicApp.Droid.Utilities.Presenter;
 using BasicApp.Interfaces;
@@ -52,7 +53,7 @@ namespace BasicApp.Droid.Views
             _drawerLayout.AddDrawerListener(_drawerToggle);
             _drawerListView.ItemClick = new MvxCommand<object>((sender) =>
             {
-                if (sender is MenuItem)
+                if (sender is MenuItemViewModel)
                 {
                     _drawerLayout.CloseDrawer(_drawerListView);
 

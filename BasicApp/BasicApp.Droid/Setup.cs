@@ -42,11 +42,8 @@ namespace BasicApp.Droid
             base.InitializeIoC();
 
             Mvx.RegisterSingleton<IFragmentTypeLookup>(new FragmentTypeLookup());
-            //Mvx.RegisterSingleton<IMessageService>(new MessageService());
-            //Mvx.RegisterSingleton<IPlatformInfo>(new PlatformInfo());
             Mvx.RegisterSingleton<IFileLocationService>(new FileLocationService());
             Mvx.RegisterSingleton<ISQLitePlatform>(new SQLitePlatformAndroid());
-            //Mvx.RegisterSingleton<IFileLocation>(new FileLocation());
         }
 
         protected override IMvxAndroidViewPresenter CreateViewPresenter()
@@ -59,15 +56,13 @@ namespace BasicApp.Droid
         protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
         {
             base.FillTargetFactories(registry);
-
-            //registry.RegisterFactory(new MvxCustomBindingFactory<RadioGroup>("SelectedIndex", (radioGroup) => new CustomRadioGroupSelectedIndexBinding(radioGroup)));
         }
 
         protected override void InitializeViewLookup()
         {
             var viewModelViewLookup = new Dictionary<Type, Type>();
             var views = typeof(HomeView).Assembly.GetExportedTypes().Where(x => x.Name.EndsWith("View", StringComparison.CurrentCulture)).ToList();
-            var viewModels = typeof(LoginViewModel).Assembly.GetExportedTypes().Where(x => x.Name.EndsWith("ViewModel", StringComparison.CurrentCulture)).ToList();
+            var viewModels = typeof(HomeViewModel).Assembly.GetExportedTypes().Where(x => x.Name.EndsWith("ViewModel", StringComparison.CurrentCulture)).ToList();
 
             foreach (var viewModel in viewModels)
             {

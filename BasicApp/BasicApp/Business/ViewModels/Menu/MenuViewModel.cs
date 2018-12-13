@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BasicApp.Business.Models;
+using BasicApp.Business.ViewModels.Shared;
 using BasicApp.Interfaces;
 using MvvmCross.Core.ViewModels;
 
@@ -31,8 +32,8 @@ namespace BasicApp.Business.ViewModels
         {
             MenuItems = new List<object>
             {
-                new MenuHeader("Michael Scott"),
-                new MenuItem("Home", typeof(HomeViewModel))
+                new MenuHeaderViewModel("Michael Scott", string.Empty),
+                new MenuItemViewModel("Home", typeof(HomeViewModel))
             };
         }
 
@@ -64,7 +65,7 @@ namespace BasicApp.Business.ViewModels
             {
                 return new MvxCommand<object>((e) =>
                 {
-                    if (e is MenuItem menuItem)
+                    if (e is MenuItemViewModel menuItem)
                     {
                         ShowViewModel(menuItem.NavigationType);
                     }

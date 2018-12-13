@@ -6,6 +6,5 @@ namespace BasicApp.Business.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string StateDescription { get; set; }
     }
 }

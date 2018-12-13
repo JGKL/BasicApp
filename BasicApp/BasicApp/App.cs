@@ -1,9 +1,5 @@
-﻿using BasicApp.Business.Factories;
-using BasicApp.Business.Services;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.Platform;
+﻿using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.IoC;
-using SQLite.Net.Interop;
 
 namespace BasicApp
 {
@@ -16,9 +12,9 @@ namespace BasicApp
             CreatableTypes().EndingWith("Service").AsInterfaces().RegisterAsLazySingleton();
             CreatableTypes().EndingWith("Repository").AsInterfaces().RegisterAsLazySingleton();
 
-            var sqLitePlatform = Mvx.Resolve<ISQLitePlatform>();
+            //var sqLitePlatform = Mvx.Resolve<ISQLitePlatform>();
 
-            Mvx.RegisterSingleton<IDatabaseService>(new DatabaseService(new DatabaseSqLiteConnection(sqLitePlatform)));
+            //Mvx.RegisterSingleton<IDatabaseService>(new DatabaseService(new DatabaseSqLiteConnection(sqLitePlatform)));
 
             RegisterAppStart(new StartScreen());
         }
