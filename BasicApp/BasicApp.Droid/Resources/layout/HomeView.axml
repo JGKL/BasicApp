@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="169.5dp"
-        android:background="@color/primaryColor"
+        android:background="@drawable/landscape"
 		android:id="@+id/homeTopSide"
         android:minWidth="25px"
         android:minHeight="25px">
