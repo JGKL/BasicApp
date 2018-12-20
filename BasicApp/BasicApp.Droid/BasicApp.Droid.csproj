@@ -302,12 +302,6 @@
     <AndroidResource Include="Resources\drawable\rounded_corners.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BasicApp\BasicApp.csproj">
-      <Project>{f7e54c79-e35f-48f7-961f-6ed273be0422}</Project>
-      <Name>BasicApp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\recyclerviewitem.axml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
@@ -321,6 +315,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\landscape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicApp.Core\BasicApp.Core.csproj">
+      <Project>{5031bc87-07b5-4589-9049-e8223b8915fa}</Project>
+      <Name>BasicApp.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
