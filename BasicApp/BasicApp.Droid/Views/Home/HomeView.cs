@@ -44,7 +44,7 @@ namespace BasicApp.Droid.Views.Home
                 new MvxViewPagerFragmentInfo(string.Empty, "tab2", typeof(FragmentTabTwoView), typeof(FragmentTabTwoViewModel)),
                 new MvxViewPagerFragmentInfo(string.Empty, "tab3", typeof(FragmentTabThreeView), typeof(FragmentTabThreeViewModel))
             };
-            var viewPagerAdapter = new MvxFragmentPagerAdapter(Context, FragmentManager, fragments);
+            var viewPagerAdapter = new MvxFragmentPagerAdapter(Context, ChildFragmentManager, fragments);
             viewPager.Adapter = viewPagerAdapter;
 
             var tabLayout = view.FindViewById<TabLayout>(Resource.Id.tabLayout);
