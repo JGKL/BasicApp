@@ -2,7 +2,7 @@
 using Android.OS;
 using MvvmCross.Droid.Support.V4;
 using BasicApp.Business.ViewModels.Home.Tabs;
-using MvvmCross.Binding.Droid.BindingContext;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace BasicApp.Droid.Views.Home.Tabs
 {

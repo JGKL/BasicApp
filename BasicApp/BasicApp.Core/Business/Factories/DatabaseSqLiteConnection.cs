@@ -1,5 +1,5 @@
 ﻿using BasicApp.Interfaces;
-using MvvmCross.Platform;
+using MvvmCross;
 using SQLite.Net;
 using SQLite.Net.Interop;
 
@@ -21,7 +21,7 @@ namespace BasicApp.Business.Factories
 
         public SQLiteConnection CreateConnection()
         {
-            var location = Mvx.Resolve<IFileLocationService>();
+            var location = Mvx.IoCProvider.Resolve<IFileLocationService>();
             return new SQLiteConnection(_platform, location.GetDatabaseFilePath("BasicApp.db3"));
         }
     }

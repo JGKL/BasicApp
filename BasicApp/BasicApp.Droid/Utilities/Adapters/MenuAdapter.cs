@@ -1,8 +1,7 @@
 ﻿using Android.Content;
 using Android.Views;
-using BasicApp.Business.Models;
 using BasicApp.Business.ViewModels.Shared;
-using MvvmCross.Binding.Droid.BindingContext;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace BasicApp.Droid.Utilities.Adapters
 {

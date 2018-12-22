@@ -2,11 +2,11 @@
 using Android.Widget;
 using Acr.UserDialogs;
 using Android.Views;
-using MvvmCross.Platform;
-using MvvmCross.Platform.Droid.Platform;
 using Plugin.Iconize.Droid.Controls;
 using System.Collections.Generic;
 using BasicApp.Business.ViewModels;
+using MvvmCross.Platforms.Android;
+using MvvmCross;
 
 namespace BasicApp.Droid.Views
 {
@@ -14,11 +14,10 @@ namespace BasicApp.Droid.Views
     {
         private int _toolbarItemCount;
         private readonly IMvxAndroidCurrentTopActivity _topActivity;
-        private List<ToolbarItemViewModel> _toolbarItems = null;
 
         public BaseActivity()
         {
-            _topActivity = Mvx.Resolve<IMvxAndroidCurrentTopActivity>();
+            _topActivity = Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>();
         }
 
         protected override void OnStart()

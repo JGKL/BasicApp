@@ -1,45 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading.Tasks;
 using BasicApp.Droid.Utilities.Helpers;
-using MvvmCross.Core.ViewModels;
+using MvvmCross;
 using MvvmCross.Droid.Support.V4;
-using MvvmCross.Droid.Views;
+using MvvmCross.Platforms.Android.Presenters;
+using MvvmCross.ViewModels;
 
 namespace BasicApp.Droid.Utilities.Presenter
 {
     public class CustomPresenter : MvxAndroidViewPresenter
     {
-        private readonly IMvxViewModelLoader _viewModelLoader;
         private readonly IFragmentTypeLookup _fragmentTypeLookup;
         private Android.Support.V4.App.FragmentManager _fragmentManager;
 
-        public CustomPresenter(IMvxViewModelLoader viewModelLoader, IFragmentTypeLookup fragmentTypeLookup) : base(new List<Assembly>())
+        public CustomPresenter() : base(new List<Assembly>())
         {
-            _fragmentTypeLookup = fragmentTypeLookup;
-            _viewModelLoader = viewModelLoader;
+            _fragmentTypeLookup = Mvx.IoCProvider.Resolve<IFragmentTypeLookup>();
+        }
+
+        private IMvxViewModelLoader _viewModelLoader;
+        private IMvxViewModelLoader ViewModelLoader
+        {
+            get
+            {
+                if (_viewModelLoader == null)
+                    _viewModelLoader = Mvx.IoCProvider.Resolve<IMvxViewModelLoader>();
+
+                return _viewModelLoader;
+            }
         }
 
         public void RegisterFragmentManager(Android.Support.V4.App.FragmentManager fragmentManager, Type viewModelType)
         {
             _fragmentManager = fragmentManager;
 
-            Type fragmentType;
-            _fragmentTypeLookup.TryGetFragmentType(viewModelType, out fragmentType);
+            _fragmentTypeLookup.TryGetFragmentType(viewModelType, out Type fragmentType);
             var viewModelRequest = new MvxViewModelRequest(viewModelType, null, null);
             ShowFragment(fragmentType, viewModelRequest, false);
         }
 
-        public override void Show(MvxViewModelRequest request)
+        public override Task<bool> Show(MvxViewModelRequest request)
         {
-            Type fragmentType;
-            if (IsFragmentManagerLoaded() && !IsViewModelTypeAnActivity(request, out fragmentType))
+            if (IsFragmentManagerLoaded() && !IsViewModelTypeAnActivity(request, out Type fragmentType))
             {
                 ShowFragment(fragmentType, request, true);
-                return;
+                return Task.FromResult(true);
             }
 
-            base.Show(request);
+            return base.Show(request);
         }
 
         private bool IsFragmentManagerLoaded()
@@ -55,7 +65,7 @@ namespace BasicApp.Droid.Utilities.Presenter
         private void ShowFragment(Type fragmentType, MvxViewModelRequest request, bool addToBackStack)
         {
             var fragment = (MvxFragment)Activator.CreateInstance(fragmentType);
-            fragment.ViewModel = _viewModelLoader.LoadViewModel(request, null);
+            fragment.ViewModel = ViewModelLoader.LoadViewModel(request, null);
 
             var transaction = _fragmentManager.BeginTransaction();
 
@@ -67,17 +77,15 @@ namespace BasicApp.Droid.Utilities.Presenter
             transaction.Replace(Resource.Id.contentFrame, fragment).Commit();
         }
 
-        public override void Close(IMvxViewModel viewModel)
+        public override Task<bool> Close(IMvxViewModel viewModel)
         {
-            var currentFragment = _fragmentManager.FindFragmentById(Resource.Id.contentFrame) as MvxFragment;
-            if (currentFragment != null && currentFragment.ViewModel == viewModel)
+            if (_fragmentManager.FindFragmentById(Resource.Id.contentFrame) is MvxFragment currentFragment && currentFragment.ViewModel == viewModel)
             {
                 _fragmentManager.PopBackStackImmediate();
-
-                return;
+                return Task.FromResult(true);
             }
 
-            base.Close(viewModel);
+            return base.Close(viewModel);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using BasicApp.Business.Models;
-using MvvmCross.Core.ViewModels;
+using MvvmCross.Commands;
 
 namespace BasicApp.Business.ViewModels
 {

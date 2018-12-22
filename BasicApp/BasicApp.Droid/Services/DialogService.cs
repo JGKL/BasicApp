@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using BasicApp.Interfaces;
-using MvvmCross.Platform;
-using MvvmCross.Platform.Droid.Platform;
+using MvvmCross;
+using MvvmCross.Platforms.Android;
 
 namespace BasicApp.Droid.Services
 {
@@ -13,7 +13,7 @@ namespace BasicApp.Droid.Services
         /// <param name="okbtnText">The okbtn text.</param>
         public void Alert(string message, string title, string okbtnText)
         {
-            var top = Mvx.Resolve<IMvxAndroidCurrentTopActivity>();
+            var top = Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>();
             var act = top.Activity;
 
             var adb = new AlertDialog.Builder(act);

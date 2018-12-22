@@ -1,18 +1,19 @@
-﻿using System;
+﻿using MvvmCross.ViewModels;
+using System;
 
 namespace BasicApp.Business.ViewModels.Shared
 {
     public class MenuItemViewModel : BaseViewModel
     {
-        public MenuItemViewModel(string label, Type navigationType, string icon = "")
+        public MenuItemViewModel(string label, IMvxViewModel viewModel, string icon = "")
         {
             Label = label;
-            NavigationType = navigationType;
+            ViewModel = viewModel;
             Icon = icon;
         }
 
         public string Label { get; private set; }
-        public Type NavigationType { get; private set; }
+        public IMvxViewModel ViewModel { get; private set; }
         public string Icon { get; private set; }
     }
 }

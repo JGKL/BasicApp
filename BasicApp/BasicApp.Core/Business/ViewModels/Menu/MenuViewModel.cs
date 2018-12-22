@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using BasicApp.Business.Models;
 using BasicApp.Business.ViewModels.Shared;
 using BasicApp.Interfaces;
-using MvvmCross.Core.ViewModels;
+using MvvmCross.Commands;
 
 namespace BasicApp.Business.ViewModels
 {
@@ -33,7 +32,7 @@ namespace BasicApp.Business.ViewModels
             MenuItems = new List<object>
             {
                 new MenuHeaderViewModel("Michael Scott", string.Empty),
-                new MenuItemViewModel("Home", typeof(HomeViewModel))
+                new MenuItemViewModel("Home", new HomeViewModel())
             };
         }
 
@@ -67,7 +66,7 @@ namespace BasicApp.Business.ViewModels
                 {
                     if (e is MenuItemViewModel menuItem)
                     {
-                        ShowViewModel(menuItem.NavigationType);
+                        Navigate(menuItem.ViewModel);
                     }
                 });
             }

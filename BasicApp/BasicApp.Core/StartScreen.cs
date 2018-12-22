@@ -1,18 +1,19 @@
 ﻿using BasicApp.Business.ViewModels;
-using MvvmCross.Core.ViewModels;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
+using System.Threading.Tasks;
 
 namespace BasicApp
 {
-    public class StartScreen : MvxNavigatingObject, IMvxAppStart
+    public class StartScreen : MvxAppStart
     {
-        public StartScreen()
+        public StartScreen(IMvxApplication application, IMvxNavigationService navigationService) : base(application, navigationService)
         {
-            Start();
         }
 
-        public void Start(object hint = null)
+        protected override Task NavigateToFirstViewModel(object hint = null)
         {
-            ShowViewModel<MenuViewModel>();
+            return NavigationService.Navigate<MenuViewModel>();
         }
     }
 }

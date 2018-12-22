@@ -2,16 +2,15 @@
 using Android.OS;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
-using BasicApp.Business.Models;
 using BasicApp.Business.ViewModels.Shared;
 using BasicApp.Droid.Utilities.Adapters;
 using BasicApp.Droid.Utilities.Presenter;
 using BasicApp.Interfaces;
-using MvvmCross.Binding.Droid.BindingContext;
-using MvvmCross.Binding.Droid.Views;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.Droid.Views;
-using MvvmCross.Platform;
+using MvvmCross;
+using MvvmCross.Commands;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
+using MvvmCross.Platforms.Android.Binding.Views;
+using MvvmCross.Platforms.Android.Presenters;
 
 namespace BasicApp.Droid.Views
 {
@@ -28,7 +27,14 @@ namespace BasicApp.Droid.Views
 
             _bundle = bundle;
 
-            SetContentView(Resource.Layout.FragmentContainer);
+            try
+            {
+                SetContentView(Resource.Layout.FragmentContainer);
+            }
+            catch(Exception e)
+            {
+
+            }
 
             _drawerListView = FindViewById<MvxListView>(Resource.Id.drawerListView);
             _drawerListView.Adapter = new MenuAdapter(this, (MvxAndroidBindingContext)BindingContext);
@@ -40,7 +46,7 @@ namespace BasicApp.Droid.Views
 
             if (_bundle == null || (_bundle != null && SupportFragmentManager?.BackStackEntryCount == 0))
             {
-                var presenter = (CustomPresenter)Mvx.Resolve<IMvxAndroidViewPresenter>();
+                var presenter = (CustomPresenter)Mvx.IoCProvider.Resolve<IMvxAndroidViewPresenter>();
                 presenter.RegisterFragmentManager(SupportFragmentManager, GetInitialViewModelType());
             }
 
@@ -48,8 +54,10 @@ namespace BasicApp.Droid.Views
             SupportActionBar.SetHomeButtonEnabled(true);
 
             _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawerLayout);
-            _drawerToggle = new ActionBarDrawerToggle(this, _drawerLayout, Resource.String.DrawerOpen, Resource.String.DrawerClosed);
-            _drawerToggle.DrawerIndicatorEnabled = true;
+            _drawerToggle = new ActionBarDrawerToggle(this, _drawerLayout, Resource.String.DrawerOpen, Resource.String.DrawerClosed)
+            {
+                DrawerIndicatorEnabled = true
+            };
             _drawerLayout.AddDrawerListener(_drawerToggle);
             _drawerListView.ItemClick = new MvxCommand<object>((sender) =>
             {
@@ -57,8 +65,7 @@ namespace BasicApp.Droid.Views
                 {
                     _drawerLayout.CloseDrawer(_drawerListView);
 
-                    var viewModel = ViewModel as INavigationModel;
-                    if (viewModel != null)
+                    if (ViewModel is INavigationModel viewModel)
                     {
                         viewModel.NavigationCommand.Execute(sender);
                     }

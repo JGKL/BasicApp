@@ -1,7 +1,7 @@
 ﻿using System;
 using Acr.UserDialogs;
 using Android.App;
-using MvvmCross.Droid.Views;
+using MvvmCross.Platforms.Android.Views;
 
 namespace BasicApp.Droid
 {

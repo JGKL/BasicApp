@@ -1,5 +1,5 @@
-﻿using MvvmCross.Core.ViewModels;
-using MvvmCross.Platform.IoC;
+﻿using MvvmCross.IoC;
+using MvvmCross.ViewModels;
 
 namespace BasicApp
 {
@@ -16,7 +16,7 @@ namespace BasicApp
 
             //Mvx.RegisterSingleton<IDatabaseService>(new DatabaseService(new DatabaseSqLiteConnection(sqLitePlatform)));
 
-            RegisterAppStart(new StartScreen());
+            RegisterCustomAppStart<StartScreen>();
         }
     }
 }

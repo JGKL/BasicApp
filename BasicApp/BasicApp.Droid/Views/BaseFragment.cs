@@ -1,8 +1,8 @@
 ﻿using Android.OS;
 using Android.Views;
 using BasicApp.Business.ViewModels;
-using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Support.V4;
+using MvvmCross.ViewModels;
 
 namespace BasicApp.Droid.Views
 {

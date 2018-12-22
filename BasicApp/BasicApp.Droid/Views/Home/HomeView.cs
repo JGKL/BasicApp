@@ -1,5 +1,4 @@
-﻿using MvvmCross.Binding.Droid.BindingContext;
-using BasicApp.Droid.Views.Home.Tabs;
+﻿using BasicApp.Droid.Views.Home.Tabs;
 using BasicApp.Business.ViewModels;
 using MvvmCross.Droid.Support.V4;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using Android.Support.Design.Widget;
 using Android.Graphics;
 using Android.App;
 using Plugin.Iconize.Droid.Controls;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace BasicApp.Droid.Views.Home
 {

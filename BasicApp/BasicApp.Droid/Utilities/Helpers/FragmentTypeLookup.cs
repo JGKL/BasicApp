@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using MvvmCross.Droid.Support.V4;
-using MvvmCross.Platform.IoC;
 using BasicApp.Common;
+using MvvmCross.IoC;
 
 namespace BasicApp.Droid.Utilities.Helpers
 {

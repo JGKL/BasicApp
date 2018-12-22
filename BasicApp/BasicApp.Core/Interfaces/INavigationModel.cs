@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MvvmCross.Commands;
+using System;
 using System.Collections.Generic;
-using MvvmCross.Core.ViewModels;
 
 namespace BasicApp.Interfaces
 {

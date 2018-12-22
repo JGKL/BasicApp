@@ -1,55 +1,45 @@
 ﻿using Android.Content;
-using Android.Widget;
 using BasicApp.Business.ViewModels;
-using BasicApp.Droid.Services;
 using BasicApp.Droid.Utilities.Helpers;
 using BasicApp.Droid.Utilities.Presenter;
+using BasicApp.Droid.Services;
 using BasicApp.Droid.Views.Home;
 using BasicApp.Interfaces;
+using MvvmCross;
 using MvvmCross.Binding.Bindings.Target.Construction;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.Core.Views;
-using MvvmCross.Droid.Platform;
-using MvvmCross.Droid.Views;
-using MvvmCross.Platform;
-using MvvmCross.Platform.Platform;
+using MvvmCross.Platforms.Android.Core;
+using MvvmCross.Platforms.Android.Presenters;
+using MvvmCross.ViewModels;
+using MvvmCross.Views;
 using SQLite.Net.Interop;
 using SQLite.Net.Platform.XamarinAndroid;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
+using MvvmCross.Droid.Support.V7.AppCompat;
 
 namespace BasicApp.Droid
 {
-    public class Setup : MvxAndroidSetup
+    public class Setup : MvxAppCompatSetup
     {
-        public Setup(Context applicationContext) : base(applicationContext)
-        {
-        }
-
         protected override IMvxApplication CreateApp()
         {
             return new App();
-        }
-
-        protected override IMvxTrace CreateDebugTrace()
-        {
-            return new DebugTrace();
         }
 
         protected override void InitializeIoC()
         {
             base.InitializeIoC();
 
-            Mvx.RegisterSingleton<IFragmentTypeLookup>(new FragmentTypeLookup());
-            Mvx.RegisterSingleton<IFileLocationService>(new FileLocationService());
-            Mvx.RegisterSingleton<ISQLitePlatform>(new SQLitePlatformAndroid());
+            Mvx.IoCProvider.RegisterSingleton<IFragmentTypeLookup>(new FragmentTypeLookup());
+            Mvx.IoCProvider.RegisterSingleton<IFileLocationService>(new FileLocationService());
+            Mvx.IoCProvider.RegisterSingleton<ISQLitePlatform>(new SQLitePlatformAndroid());
         }
 
         protected override IMvxAndroidViewPresenter CreateViewPresenter()
         {
-            var presenter = Mvx.IocConstruct<CustomPresenter>();
-            Mvx.RegisterSingleton<IMvxAndroidViewPresenter>(presenter);
+            var presenter = Mvx.IoCProvider.IoCConstruct<CustomPresenter>();
+            Mvx.IoCProvider.RegisterSingleton<IMvxAndroidViewPresenter>(presenter);
             return presenter;
         }
 
@@ -83,7 +73,7 @@ namespace BasicApp.Droid
                     viewModelViewLookup.Add(viewModel, view);
             }
 
-            var container = Mvx.Resolve<IMvxViewsContainer>();
+            var container = Mvx.IoCProvider.Resolve<IMvxViewsContainer>();
             container.AddAll(viewModelViewLookup);
         }
     }
