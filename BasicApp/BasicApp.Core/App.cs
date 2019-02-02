@@ -16,10 +16,10 @@ namespace BasicApp
             CreatableTypes().EndingWith("Service").AsInterfaces().RegisterAsLazySingleton();
             CreatableTypes().EndingWith("Repository").AsInterfaces().RegisterAsLazySingleton();
 
-            RegisterCustomAppStart<StartScreen>();
+            var platformInformation = Mvx.IoCProvider.Resolve<IPlatformInformation>();
+            Mvx.IoCProvider.RegisterSingleton<IDatabaseService>(new DatabaseService(new DatabaseSqLiteConnection(platformInformation.GetSQLitePlatform())));
 
-            // var platformInformation = Mvx.IoCProvider.Resolve<IPlatformInformation>();
-            // Mvx.IoCProvider.RegisterSingleton<IDatabaseService>(new DatabaseService(new DatabaseSqLiteConnection(platformInformation.GetSQLitePlatform())));
+            RegisterCustomAppStart<StartScreen>();
         }
     }
 }

@@ -17,6 +17,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using BasicApp.Core.Interfaces;
 
 namespace BasicApp.Droid
 {
@@ -32,8 +33,9 @@ namespace BasicApp.Droid
             base.InitializeIoC();
 
             Mvx.IoCProvider.RegisterSingleton<IFragmentTypeLookup>(new FragmentTypeLookup());
-            Mvx.IoCProvider.RegisterSingleton<IFileLocationService>(new FileLocationService());
             Mvx.IoCProvider.RegisterSingleton<ISQLitePlatform>(new SQLitePlatformAndroid());
+            Mvx.IoCProvider.RegisterSingleton<IFileLocationService>(new FileLocationService());
+            Mvx.IoCProvider.RegisterSingleton<IPlatformInformation>(new PlatformInformation());
         }
 
         protected override IMvxAndroidViewPresenter CreateViewPresenter()
