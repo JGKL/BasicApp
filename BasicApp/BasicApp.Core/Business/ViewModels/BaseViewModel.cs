@@ -20,6 +20,11 @@ namespace BasicApp.Business.ViewModels
             return _navigationService.Navigate(viewModel);
         }
 
+        public Task<bool> Navigate<T> () where T : IMvxViewModel
+        {
+            return _navigationService.Navigate<T>();
+        }
+
         List<ToolbarItemViewModel> _toolbarItems;
         public List<ToolbarItemViewModel> ToolbarItems
         {

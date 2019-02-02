@@ -27,14 +27,7 @@ namespace BasicApp.Droid.Views
 
             _bundle = bundle;
 
-            try
-            {
-                SetContentView(Resource.Layout.FragmentContainer);
-            }
-            catch(Exception e)
-            {
-
-            }
+            SetContentView(Resource.Layout.FragmentContainer);
 
             _drawerListView = FindViewById<MvxListView>(Resource.Id.drawerListView);
             _drawerListView.Adapter = new MenuAdapter(this, (MvxAndroidBindingContext)BindingContext);
@@ -48,6 +41,7 @@ namespace BasicApp.Droid.Views
             {
                 var presenter = (CustomPresenter)Mvx.IoCProvider.Resolve<IMvxAndroidViewPresenter>();
                 presenter.RegisterFragmentManager(SupportFragmentManager, GetInitialViewModelType());
+                //presenter.RegisterTransitionManager(ContentTransitionManager);
             }
 
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);

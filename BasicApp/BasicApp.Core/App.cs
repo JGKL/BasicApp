@@ -1,4 +1,8 @@
-﻿using MvvmCross.IoC;
+﻿using BasicApp.Business.Factories;
+using BasicApp.Business.Services;
+using BasicApp.Core.Interfaces;
+using MvvmCross;
+using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 
 namespace BasicApp
@@ -12,11 +16,10 @@ namespace BasicApp
             CreatableTypes().EndingWith("Service").AsInterfaces().RegisterAsLazySingleton();
             CreatableTypes().EndingWith("Repository").AsInterfaces().RegisterAsLazySingleton();
 
-            //var sqLitePlatform = Mvx.Resolve<ISQLitePlatform>();
-
-            //Mvx.RegisterSingleton<IDatabaseService>(new DatabaseService(new DatabaseSqLiteConnection(sqLitePlatform)));
-
             RegisterCustomAppStart<StartScreen>();
+
+            // var platformInformation = Mvx.IoCProvider.Resolve<IPlatformInformation>();
+            // Mvx.IoCProvider.RegisterSingleton<IDatabaseService>(new DatabaseService(new DatabaseSqLiteConnection(platformInformation.GetSQLitePlatform())));
         }
     }
 }

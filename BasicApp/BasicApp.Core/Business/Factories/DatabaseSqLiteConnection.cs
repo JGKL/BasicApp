@@ -21,8 +21,10 @@ namespace BasicApp.Business.Factories
 
         public SQLiteConnection CreateConnection()
         {
-            var location = Mvx.IoCProvider.Resolve<IFileLocationService>();
-            return new SQLiteConnection(_platform, location.GetDatabaseFilePath("BasicApp.db3"));
+            var _locationService = Mvx.IoCProvider.Resolve<IFileLocationService>();
+            var path = _locationService.GetDatabaseFilePath();
+            var conn = new SQLiteConnection(_platform, path);
+            return conn;
         }
     }
 }

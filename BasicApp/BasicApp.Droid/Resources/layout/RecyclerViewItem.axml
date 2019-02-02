@@ -9,7 +9,7 @@
 		android:id="@+id/recyclerviewitem"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		local:cardBackgroundColor="@color/primaryColor"
+		local:cardBackgroundColor="@color/lightGrey"
 		local:cardElevation="5dp">
 		<FrameLayout
 			android:layout_height="50dp"

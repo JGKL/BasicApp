@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DataAccess\" />
-    <Folder Include="ServiceAccess\Common\" />
-    <Folder Include="ServiceAccess\Models\" />
-    <Folder Include="ServiceAccess\ServiceAgents\" />
     <Folder Include="Utils\Converters\" />
     <Folder Include="Utils\Extensions\" />
     <Folder Include="Utils\Providers\" />

@@ -21,20 +21,20 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>True</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-    <Debugger>.Net (Xamarin)</Debugger>
+    <Debugger>Xamarin</Debugger>
     <AotAssemblies>False</AotAssemblies>
     <EnableLLVM>False</EnableLLVM>
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
@@ -48,6 +48,8 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
+    <DebugSymbols>false</DebugSymbols>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -177,6 +179,7 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Utilities\Adapters\BaseAdapter.cs" />
     <Compile Include="Utilities\Adapters\MenuAdapter.cs" />
+    <Compile Include="Utilities\Helpers\PlatformInformation.cs" />
     <Compile Include="Views\Home\Tabs\FragmentTabThreeView.cs" />
     <Compile Include="Views\Home\Tabs\FragmentTabTwoView.cs" />
     <Compile Include="Views\Home\Tabs\FragmentTabOneView.cs" />
@@ -188,6 +191,9 @@
     <Compile Include="Views\Home\HomeView.cs" />
     <Compile Include="Views\MenuBaseActivity.cs" />
     <Compile Include="Views\Menu\MenuView.cs" />
+    <Compile Include="Views\Programma\ProgrammaView.cs" />
+    <Compile Include="Views\Statistieken\StatistiekenView.cs" />
+    <Compile Include="Views\Training\AddTrainingView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fontawesome-webfont.ttf" />
@@ -237,9 +243,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utilities\PlatformSpecific\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Colors.xml">
@@ -309,6 +312,41 @@
       <Project>{5031bc87-07b5-4589-9049-e8223b8915fa}</Project>
       <Name>BasicApp.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AddTrainingView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\edit_text_border_bottom.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\slide_right.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\exit_to_right.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\StatistiekenView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ProgrammaView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\fade_transition.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\transition\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

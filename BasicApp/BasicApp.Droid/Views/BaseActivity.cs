@@ -1,12 +1,19 @@
-﻿using MvvmCross.Droid.Support.V7.AppCompat;
-using Android.Widget;
+﻿using Android.Widget;
 using Acr.UserDialogs;
 using Android.Views;
 using Plugin.Iconize.Droid.Controls;
 using System.Collections.Generic;
 using BasicApp.Business.ViewModels;
+using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Platforms.Android;
 using MvvmCross;
+using Android.Support.V4.Content;
+using Android.Util;
+using Android.OS;
+using Android.Support.Design.Widget;
+using Android.Views.Animations;
+using System;
+using Android.Support.Transitions;
 
 namespace BasicApp.Droid.Views
 {
@@ -20,12 +27,24 @@ namespace BasicApp.Droid.Views
             _topActivity = Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>();
         }
 
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeModule());
+        }
+
         protected override void OnStart()
         {
             base.OnStart();
 
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
+
+            //var startButton = FindViewById<FloatingActionButton>(Resource.Id.startButton);
+            //var drawable = new IconDrawable(this, "fa-plus").Color(ContextCompat.GetColor(this, Resource.Color.primaryColor));
+            //drawable.SetBounds(0, 0, 150, 150);
+            //startButton.SetImageDrawable(drawable);
         }
 
         public void RemoveToolbarItems()
@@ -45,7 +64,12 @@ namespace BasicApp.Droid.Views
 
                 _toolbarItemCount++;
 
+                TypedValue typedValue = new TypedValue();
+                Theme.ResolveAttribute(Resource.Attribute.colorControlNormal, typedValue, true);
+                var color = ContextCompat.GetColor(this, typedValue.ResourceId);
                 var icon = new IconDrawable(_topActivity.Activity, item.Icon);
+                icon.Color(color);
+
                 var image = new ImageView(this);
 
                 switch (_toolbarItemCount)
@@ -61,15 +85,17 @@ namespace BasicApp.Droid.Views
                         break;
                 }
 
-                var layoutParams = new RelativeLayout.LayoutParams(120, 120) { AlignWithParent = true };
+                var layoutParams = new RelativeLayout.LayoutParams(110, 110) { AlignWithParent = true };
                 layoutParams.AddRule(LayoutRules.AlignParentRight);
 
-                layoutParams.RightMargin = 70 * _toolbarItemCount;
+                layoutParams.RightMargin = 40 * _toolbarItemCount;
 
                 if (_toolbarItemCount == 1)
-                    layoutParams.RightMargin = 70;
+                    layoutParams.RightMargin = 40;
                 else if (_toolbarItemCount == 2)
-                    layoutParams.RightMargin = 240;
+                    layoutParams.RightMargin = 180;
+
+                layoutParams.TopMargin = 50;
 
                 image.LayoutParameters = layoutParams;
                 image.Visibility = ViewStates.Visible;

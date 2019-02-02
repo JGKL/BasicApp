@@ -1,5 +1,5 @@
-﻿using Android.Views;
-using Android.OS;
+﻿using Android.OS;
+using Android.Views;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using BasicApp.Business.ViewModels.Home.Tabs;

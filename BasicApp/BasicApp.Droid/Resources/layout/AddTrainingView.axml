@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+	<LinearLayout
+		xmlns:local="http://schemas.android.com/apk/res-auto"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:background="@color/background">
+		<Button
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:textColor="@color/black"
+			android:id="@+id/training_datum"
+			android:layout_marginTop="10dp"
+			android:padding="10dp"
+			android:textCursorDrawable="@null"
+			android:text="Selecteer datum"
+			android:background="@drawable/edit_text_border_bottom" />
+		<EditText
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:textColorHint="@color/lightGrey"
+			android:textColor="@color/black"
+			android:hint="Programma"
+			local:MvxBind="Text Training.Programma"
+			android:layout_marginTop="10dp"
+			android:padding="10dp"
+			android:textCursorDrawable="@null"
+			android:background="@drawable/edit_text_border_bottom" />
+		<EditText
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:textColorHint="@color/lightGrey"
+			android:textColor="@color/black"
+			android:hint="Tempo"
+			local:MvxBind="Text Training.Tempo"
+			android:layout_marginTop="10dp"
+			android:padding="10dp"
+			android:textCursorDrawable="@null"
+			android:background="@drawable/edit_text_border_bottom" />
+		<EditText
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:textColorHint="@color/lightGrey"
+			android:textColor="@color/black"
+			android:hint="Hartslag"
+			local:MvxBind="Text Training.Hartslag"
+			android:layout_marginTop="10dp"
+			android:padding="10dp"
+			android:textCursorDrawable="@null"
+			android:background="@drawable/edit_text_border_bottom" />
+		<EditText
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:textColorHint="@color/lightGrey"
+			android:textColor="@color/black"
+			android:hint="Tijden"
+			local:MvxBind="Text Training.Tijden"
+			android:layout_marginTop="10dp"
+			android:padding="10dp"
+			android:textCursorDrawable="@null"
+			android:background="@drawable/edit_text_border_bottom" />
+		<EditText
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:textColorHint="@color/lightGrey"
+			android:textColor="@color/black"
+			android:hint="Gevoel"
+			local:MvxBind="Text Training.Gevoel"
+			android:layout_marginTop="10dp"
+			android:padding="10dp"
+			android:textCursorDrawable="@null"
+			android:background="@drawable/edit_text_border_bottom" />
+		<EditText
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:textColorHint="@color/lightGrey"
+			android:textColor="@color/black"
+			android:hint="Kilometers"
+			local:MvxBind="Text Training.Kilometers"
+			android:layout_marginTop="10dp"
+			android:padding="10dp"
+			android:textCursorDrawable="@null"
+			android:background="@drawable/edit_text_border_bottom" />
+		<EditText
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:textColorHint="@color/lightGrey"
+			android:textColor="@color/black"
+			android:hint="Opmerkingen"
+			local:MvxBind="Text Training.Opmerkingen"
+			android:layout_marginTop="10dp"
+			android:padding="10dp"
+			android:textCursorDrawable="@null"
+			android:background="@drawable/edit_text_border_bottom" />
+		<Button
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:layout_marginBottom="20dp"
+			android:textColorHint="@color/grey"
+			android:background="@color/primaryColor"
+			android:textColor="@android:color/white"
+			android:text="Opslaan"
+			local:MvxBind="Click OpslaanCommand"
+			android:layout_marginTop="20dp" />
+	</LinearLayout>
+</ScrollView>

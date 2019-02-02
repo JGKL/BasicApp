@@ -11,8 +11,7 @@ namespace BasicApp.Business.ViewModels
 
             ToolbarItems = new List<ToolbarItemViewModel>
             {
-                new ToolbarItemViewModel("fa-heart", "Heart", "IconOne", "Added to your favorites list!"),
-                new ToolbarItemViewModel("fa-calendar", "Calendar", "IconTwo", "Added to your agenda!")
+                new ToolbarItemViewModel("fa-info-circle", "Info", "IconOne", "Info :-)")
             };
         }
 

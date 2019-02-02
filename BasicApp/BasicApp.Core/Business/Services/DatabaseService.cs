@@ -1,69 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BasicApp.Business.Factories;
-using BasicApp.Business.Models;
 using SQLite.Net;
+using System.Linq;
+using System.Collections.Generic;
+using BasicApp.Business.Factories;
+using BasicApp.Core.Business.Models;
 
 namespace BasicApp.Business.Services
 {
     public interface IDatabaseService
     {
-        /// <summary>
-        /// Insert the specified obj.
-        /// </summary>
-        /// <returns>The insert.</returns>
-        /// <param name="obj">Object.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         void Insert<T>(T obj);
-
-        /// <summary>
-        /// Inserts the collection.
-        /// </summary>
-        /// <param name="objs">Objects.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         void InsertCollection<T>(List<T> objs);
 
-        /// <summary>
-        /// Delete the specified obj with id.
-        /// </summary>
-        /// <returns>The delete.</returns>
-        /// <param name="id">Identifier.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         void Delete<T>(int id) where T : class;
+        void DeleteCollection<T>(Func<T, bool> predicate = null) where T : class;
 
-        /// <summary>
-        /// Update the specified obj.
-        /// </summary>
-        /// <returns>The update.</returns>
-        /// <param name="obj">Object.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         void Update<T>(T obj);
 
-        /// <summary>
-        /// Get the specified id.
-        /// </summary>
-        /// <returns>The get.</returns>
-        /// <param name="id">Identifier.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         T Get<T>(int? id) where T : class;
-
-        T Find<T>(int id) where T : DataObject;
-
-        /// <summary>
-        /// Gets the collection.
-        /// </summary>
-        /// <returns>The collection.</returns>
-        /// <param name="predicate">Predicate.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         List<T> GetCollection<T>(Func<T, bool> predicate = null) where T : class;
 
-        /// <summary>
-        /// Deletes the collection.
-        /// </summary>
-        /// <param name="predicate">Predicate.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
-        void DeleteCollection<T>(Func<T, bool> predicate = null) where T : class;
+        T Find<T>(int id) where T : class;
+
     }
 
     public class DatabaseService : IDatabaseService
@@ -84,15 +42,9 @@ namespace BasicApp.Business.Services
 
         void CreateTables()
         {
-            
+            _databaseConnection.CreateTable<Training>();
         }
 
-        /// <summary>
-        /// Insert the specified obj.
-        /// </summary>
-        /// <returns>The insert.</returns>
-        /// <param name="obj">Object.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         public void Insert<T>(T obj)
         {
             lock (_locker)
@@ -101,11 +53,6 @@ namespace BasicApp.Business.Services
             }
         }
 
-        /// <summary>
-        /// Inserts the collection.
-        /// </summary>
-        /// <param name="objs">Objects.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         public void InsertCollection<T>(List<T> objs)
         {
             lock (_locker)
@@ -114,12 +61,6 @@ namespace BasicApp.Business.Services
             }
         }
 
-        /// <summary>
-        /// Delete object with specified id.
-        /// </summary>
-        /// <returns>The delete.</returns>
-        /// <param name="id">Identifier.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         public void Delete<T>(int id) where T : class
         {
             lock (_locker)
@@ -130,12 +71,6 @@ namespace BasicApp.Business.Services
             }
         }
 
-        /// <summary>
-        /// Update the specified obj.
-        /// </summary>
-        /// <returns>The update.</returns>
-        /// <param name="obj">Object.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         public void Update<T>(T obj)
         {
             lock (_locker)
@@ -144,12 +79,6 @@ namespace BasicApp.Business.Services
             }
         }
 
-        /// <summary>
-        /// Get the specified object with id or returns the first item from the table if there is any.
-        /// </summary>
-        /// <returns>The get.</returns>
-        /// <param name="id">Identifier.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         public T Get<T>(int? id) where T : class
         {
             lock (_locker)
@@ -169,13 +98,7 @@ namespace BasicApp.Business.Services
             }
         }
 
-        /// <summary>
-        /// Get the specified object with id or returns null if it is not found.
-        /// </summary>
-        /// <returns>The get.</returns>
-        /// <param name="id">Identifier.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public T Find<T>(int id) where T : DataObject
+        public T Find<T>(int id) where T : class
         {
             lock (_locker)
             {
@@ -183,12 +106,6 @@ namespace BasicApp.Business.Services
             }
         }
 
-        /// <summary>
-        /// Gets the collection.
-        /// </summary>
-        /// <returns>The collection.</returns>
-        /// <param name="predicate">Predicate.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         public List<T> GetCollection<T>(Func<T, bool> predicate = null) where T : class
         {
             lock (_locker)
@@ -199,11 +116,6 @@ namespace BasicApp.Business.Services
             }
         }
 
-        /// <summary>
-        /// Deletes the collection.
-        /// </summary>
-        /// <param name="predicate">Predicate.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
         public void DeleteCollection<T>(Func<T, bool> predicate = null) where T : class
         {
             lock (_locker)

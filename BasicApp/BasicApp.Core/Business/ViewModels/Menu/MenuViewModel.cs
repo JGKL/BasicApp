@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using BasicApp.Business.ViewModels.Shared;
+using BasicApp.Core.Business.ViewModels;
+using BasicApp.Core.Business.ViewModels.Programma;
+using BasicApp.Core.Business.ViewModels.Statistieken;
 using BasicApp.Interfaces;
 using MvvmCross.Commands;
 
@@ -32,30 +35,10 @@ namespace BasicApp.Business.ViewModels
             MenuItems = new List<object>
             {
                 new MenuHeaderViewModel("Michael Scott", string.Empty),
-                new MenuItemViewModel("Home", new HomeViewModel())
+                new MenuItemViewModel("Home", new HomeViewModel()),
+                new MenuItemViewModel("Programma", new ProgrammaViewModel()),
+                new MenuItemViewModel("Statistieken", new StatistiekenViewModel()),
             };
-        }
-
-        private string _iconOne;
-        public string IconOne
-        {
-            get => _iconOne;
-            set
-            {
-                _iconOne = value;
-                RaisePropertyChanged(() => IconOne);
-            }
-        }
-
-        private string _iconTwo;
-        public string IconTwo
-        {
-            get => _iconTwo;
-            set
-            {
-                _iconTwo = value;
-                RaisePropertyChanged(() => IconTwo);
-            }
         }
 
         public IMvxCommand NavigationCommand
@@ -68,6 +51,17 @@ namespace BasicApp.Business.ViewModels
                     {
                         Navigate(menuItem.ViewModel);
                     }
+                });
+            }
+        }
+
+        public IMvxCommand ShowAddTrainingViewModelCommand
+        {
+            get
+            {
+                return new MvxCommand(() =>
+                {
+                    Navigate<AddTrainingViewModel>();
                 });
             }
         }
