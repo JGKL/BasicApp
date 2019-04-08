@@ -2,6 +2,8 @@
 using MvvmCross;
 using SQLite.Net;
 using SQLite.Net.Interop;
+using System;
+using System.Diagnostics;
 
 namespace BasicApp.Business.Factories
 {
@@ -23,8 +25,9 @@ namespace BasicApp.Business.Factories
         {
             var _locationService = Mvx.IoCProvider.Resolve<IFileLocationService>();
             var path = _locationService.GetDatabaseFilePath();
-            var conn = new SQLiteConnection(_platform, path);
-            return conn;
+
+            var connection = new SQLiteConnection(_platform, path);
+            return connection;
         }
     }
 }

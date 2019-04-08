@@ -7,9 +7,13 @@ using System.Collections.Generic;
 using BasicApp.Business.ViewModels;
 using Plugin.Iconize.Droid.Controls;
 using Android.Support.Design.Widget;
-using BasicApp.Droid.Views.Home.Tabs;
-using BasicApp.Business.ViewModels.Home.Tabs;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
+using BasicApp.Core.Business.ViewModels;
+using BasicApp.Core.Business.ViewModels.Historie;
+using BasicApp.Core.Business.ViewModels.Overzicht;
+using BasicApp.Droid.Views.Overzicht;
+using BasicApp.Droid.Views.Historie;
+using BasicApp.Droid.Views.Training;
 
 namespace BasicApp.Droid.Views.Home
 {
@@ -20,24 +24,22 @@ namespace BasicApp.Droid.Views.Home
             base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(Resource.Layout.HomeView, null);
 
-            ((BaseActivity)Activity).CreateToolbarItemView(ViewModel.ToolbarItems);
-
             var viewPager = view.FindViewById<ViewPager>(Resource.Id.viewPager);
             var fragments = new List<MvxViewPagerFragmentInfo>
             {
-                new MvxViewPagerFragmentInfo(string.Empty, "tab1", typeof(FragmentTabOneView), typeof(FragmentTabOneViewModel)),
-                new MvxViewPagerFragmentInfo(string.Empty, "tab2", typeof(FragmentTabTwoView), typeof(FragmentTabTwoViewModel)),
-                new MvxViewPagerFragmentInfo(string.Empty, "tab3", typeof(FragmentTabThreeView), typeof(FragmentTabThreeViewModel))
+                new MvxViewPagerFragmentInfo("Historie", "tab1", typeof(HistorieView), typeof(HistorieViewModel)),
+                new MvxViewPagerFragmentInfo("Overzicht", "tab2", typeof(OverzichtView), typeof(OverzichtViewModel)),
+                new MvxViewPagerFragmentInfo("Training", "tab3", typeof(AddTrainingView), typeof(AddTrainingViewModel))
             };
-            var viewPagerAdapter = new MvxFragmentPagerAdapter(Context, ChildFragmentManager, fragments);
+            var viewPagerAdapter = new MvxFragmentStatePagerAdapter(Context, ChildFragmentManager, fragments);
             viewPager.Adapter = viewPagerAdapter;
             viewPager.SetCurrentItem(1, false);
 
             var tabLayout = view.FindViewById<TabLayout>(Resource.Id.tabLayout);
             tabLayout.SetupWithViewPager(viewPager);
-            tabLayout.GetTabAt(0).SetIcon(new IconDrawable(Context, "fa-list").Color(ContextCompat.GetColor(Context, Resource.Color.primaryColor)));
-            tabLayout.GetTabAt(1).SetIcon(new IconDrawable(Context, "fa-trophy").Color(ContextCompat.GetColor(Context, Resource.Color.primaryColor)));
-            tabLayout.GetTabAt(2).SetIcon(new IconDrawable(Context, "fa-compass").Color(ContextCompat.GetColor(Context, Resource.Color.primaryColor)));
+            tabLayout.GetTabAt(0).SetIcon(new IconDrawable(Context, "fa-history").Color(ContextCompat.GetColor(Context, Resource.Color.primaryColor)));
+            tabLayout.GetTabAt(1).SetIcon(new IconDrawable(Context, "fa-user").Color(ContextCompat.GetColor(Context, Resource.Color.primaryColor)));
+            tabLayout.GetTabAt(2).SetIcon(new IconDrawable(Context, "fa-plus").Color(ContextCompat.GetColor(Context, Resource.Color.primaryColor)));
 
             return view;
         }

@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -15,17 +16,21 @@ namespace BasicApp.Droid.Views.Training
             base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(Resource.Layout.AddTrainingView, null);
 
-            var datumButton = view.FindViewById<Button>(Resource.Id.training_datum);
+            var fontAwesomeTypeFace = Typeface.CreateFromAsset(Application.Context.Assets, "fontawesome-webfont.ttf");
+
+            var datumButton = view.FindViewById<TextView>(Resource.Id.training_datum);
             datumButton.Click += (object sender, EventArgs e) =>
             {
                 var fragment = DatePickerFragment.NewInstance(delegate (DateTime time)
                 {
-                    datumButton.Text = time.ToLongDateString();
+                    ViewModel.Datum = time;
                 });
                 fragment.Show(ChildFragmentManager, "DatePicker");
             };
+            datumButton.SetTypeface(fontAwesomeTypeFace, TypefaceStyle.Normal);
 
-            var toolbar = Activity.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            var beginTitleTextView = view.FindViewById<TextView>(Resource.Id.beginTitle);
+            beginTitleTextView.SetTypeface(fontAwesomeTypeFace, TypefaceStyle.Normal);
 
             return view;
         }

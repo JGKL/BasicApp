@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:local="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="60dp"
+	android:background="@drawable/training_list_item"
+	android:columnCount="3"
+    android:rowCount="1">
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+	    android:layout_columnWeight="0"
+		android:layout_marginLeft="10dp"
+		android:layout_column="0"
+		android:layout_row="0">
+		<ImageView
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:layout_centerInParent="true"
+			local:MvxBind="Drawable DateIcon, Converter=Icon" />
+		<TextView
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:textColor="@color/primaryColor"
+			android:gravity="bottom|center_horizontal"
+			android:textAlignment="center"
+			android:layout_centerInParent="true"
+			android:text="12"
+			local:MvxBind="Text Datum, Converter=DateTimeToDayNumber"/>
+	</RelativeLayout>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_columnWeight="1"
+		android:layout_column="1"
+		android:layout_row="0"
+		android:layout_marginLeft="15dp"
+		android:text="Example text"
+		local:MvxBind="Text Programma"
+		android:layout_gravity="center_vertical"
+		android:textColor="@color/black"
+		android:textAppearance="?android:attr/textAppearanceSmall" />
+	<ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="10dp"
+		android:layout_columnWeight="0"
+		android:layout_column="2"
+		android:layout_row="0"
+		local:MvxBind="Drawable NextIcon, Converter=Icon"
+        android:layout_gravity="center_vertical" />
+</GridLayout>

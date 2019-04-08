@@ -11,6 +11,9 @@ namespace BasicApp.Core.Business.Models
         public string Tijden { get; set; }
         public string Gevoel { get; set; }
         public string Kilometers { get; set; }
-        public string Opmerking { get; set; }
+        public string Opmerkingen { get; set; }
+
+        public string NextIcon => "fa-caret-right";
+        public string DateIcon => "fa-calendar-o"; 
     }
 }

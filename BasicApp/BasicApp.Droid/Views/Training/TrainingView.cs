@@ -1,17 +1,16 @@
 ﻿using Android.OS;
 using Android.Views;
-using MvvmCross.Droid.Support.V4;
-using BasicApp.Business.ViewModels.Home.Tabs;
+using BasicApp.Core.Business.ViewModels;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 
-namespace BasicApp.Droid.Views.Home.Tabs
+namespace BasicApp.Droid.Views.Training
 {
-    public class FragmentTabTwoView : MvxFragment<FragmentTabThreeViewModel>
+    public class TrainingView : BaseFragment<TrainingViewModel>
     {
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
-            var view = this.BindingInflate(Resource.Layout.TabFragmentTwo, null);
+            var view = this.BindingInflate(Resource.Layout.TrainingView, null);
             return view;
         }
     }

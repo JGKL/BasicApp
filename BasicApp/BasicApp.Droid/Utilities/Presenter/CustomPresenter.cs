@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
+using Android.Support.Transitions;
 using BasicApp.Droid.Utilities.Helpers;
+using BasicApp.Droid.Views.Historie;
+using BasicApp.Droid.Views.Training;
 using MvvmCross;
 using MvvmCross.Droid.Support.V4;
+using MvvmCross.Platforms.Android;
 using MvvmCross.Platforms.Android.Presenters;
 using MvvmCross.ViewModels;
 
@@ -71,6 +75,11 @@ namespace BasicApp.Droid.Utilities.Presenter
 
             if (addToBackStack)
                 transaction.AddToBackStack(fragment.GetType().Name);
+
+            if (fragment.GetType() == typeof(HistorieView))
+            {
+                fragment.ExitTransition = new Explode();
+            }
 
             //transaction.SetCustomAnimations(Resource.Layout.enter_from_right, Resource.Layout.exit_to_right);
 
