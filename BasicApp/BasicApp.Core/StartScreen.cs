@@ -13,7 +13,7 @@ namespace BasicApp
 
         protected override Task NavigateToFirstViewModel(object hint = null)
         {
-            return NavigationService.Navigate<MenuViewModel>();
+            return NavigationService.Navigate<HomeViewModel>();
         }
     }
 }

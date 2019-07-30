@@ -24,15 +24,31 @@
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
-    <!--Floating label text style-->
-    <style name="HintText" parent="TextAppearance.AppCompat.Small">
-      <item name="android:textColor">@color/grey</item>
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!-- Color of the border before it is focussed -->
+        <item name="boxStrokeColor">#1e252d</item>
+        <item name="boxStrokeWidth">1dp</item>
     </style>
-    
-    <!--Input field style-->
-    <style name="EditText" parent="Theme.AppCompat.Light">
-      <item name="colorControlNormal">@color/black</item>
-      <item name="colorControlActivated">@color/black</item>
-      <item name="colorControlHighlight">@color/black</item>
+
+    <style name="TextInputLayoutTheme">         
+      <!-- Color of the top floating hint label 
+           Color of the blinking | marker 
+           Color of the copy/paste actions marker -->
+      <item name="colorControlActivated">#666666</item>
+
+      <!-- Color of the text shown in the textfield before it has focus -->
+      <item name="android:textColorHint">#a6a9ac</item>
+    </style>
+
+    <style name="TextInputEditText" parent="Theme.AppCompat.Light">
+      <item name="android:textSize">16sp</item>
+      <item name="android:paddingLeft">14dp</item>
+      <item name="android:paddingBottom">16dp</item>
+      <item name="android:paddingTop">12dp</item>
+      <item name="android:paddingRight">8dp</item>
+      
+      <!-- Color of the filled in text 
+           Color of the textfield border when it is focussed -->
+      <item name="android:textColor">#1e252d</item>
     </style>
 </resources>

@@ -1,16 +1,12 @@
-﻿using System;
-using Android.OS;
+﻿using Android.OS;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using BasicApp.Business.ViewModels.Shared;
 using BasicApp.Droid.Utilities.Adapters;
-using BasicApp.Droid.Utilities.Presenter;
 using BasicApp.Interfaces;
-using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Binding.Views;
-using MvvmCross.Platforms.Android.Presenters;
 
 namespace BasicApp.Droid.Views
 {
@@ -36,13 +32,6 @@ namespace BasicApp.Droid.Views
         protected override void OnStart()
         {
             base.OnStart();
-
-            if (_bundle == null || (_bundle != null && SupportFragmentManager?.BackStackEntryCount == 0))
-            {
-                var presenter = (CustomPresenter)Mvx.IoCProvider.Resolve<IMvxAndroidViewPresenter>();
-                presenter.RegisterFragmentManager(SupportFragmentManager, GetInitialViewModelType());
-                //presenter.RegisterTransitionManager(ContentTransitionManager);
-            }
 
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
@@ -82,7 +71,5 @@ namespace BasicApp.Droid.Views
             }
             return base.OnOptionsItemSelected(item);
         }
-
-        protected abstract Type GetInitialViewModelType();
     }
 }

@@ -7,14 +7,12 @@
     android:gravity="center_horizontal"
 	android:background="@color/lightGrey"
     android:orientation="vertical">
-	<Button Text="Test the command!" 
-			Command="{ Binding TestAsyncCommand }"/>
     <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
         android:id="@+id/trainingen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 		android:divider="@android:color/transparent"
 		android:dividerHeight="2dp"
-        local:MvxBind="ItemsSource Trainingen; ItemClick OpenTrainingCommand"
+        local:MvxBind="ItemsSource Trainingen"
         local:MvxItemTemplate="@layout/traininglistitem" />
 </LinearLayout>

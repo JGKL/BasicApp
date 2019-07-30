@@ -14,10 +14,12 @@ using BasicApp.Core.Business.ViewModels.Overzicht;
 using BasicApp.Droid.Views.Overzicht;
 using BasicApp.Droid.Views.Historie;
 using BasicApp.Droid.Views.Training;
+using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BasicApp.Droid.Views.Home
 {
-    public class HomeView : BaseFragment<HomeViewModel>
+    [MvxFragmentPresentation(typeof(MenuViewModel), Resource.Id.contentFrame)]
+    public class HomeFragment : MvxFragment<HomeViewModel>
     {
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -27,9 +29,9 @@ namespace BasicApp.Droid.Views.Home
             var viewPager = view.FindViewById<ViewPager>(Resource.Id.viewPager);
             var fragments = new List<MvxViewPagerFragmentInfo>
             {
-                new MvxViewPagerFragmentInfo("Historie", "tab1", typeof(HistorieView), typeof(HistorieViewModel)),
-                new MvxViewPagerFragmentInfo("Overzicht", "tab2", typeof(OverzichtView), typeof(OverzichtViewModel)),
-                new MvxViewPagerFragmentInfo("Training", "tab3", typeof(AddTrainingView), typeof(AddTrainingViewModel))
+                new MvxViewPagerFragmentInfo("Historie", "tab1", typeof(HistorieFragment), typeof(HistorieViewModel)),
+                new MvxViewPagerFragmentInfo("Overzicht", "tab2", typeof(OverzichtFragment), typeof(OverzichtViewModel)),
+                new MvxViewPagerFragmentInfo("Training", "tab3", typeof(AddTrainingFragment), typeof(AddTrainingViewModel))
             };
             var viewPagerAdapter = new MvxFragmentStatePagerAdapter(Context, ChildFragmentManager, fragments);
             viewPager.Adapter = viewPagerAdapter;

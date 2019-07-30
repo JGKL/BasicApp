@@ -3,6 +3,7 @@ using BasicApp.Business.ViewModels;
 using BasicApp.Core.Business.Models;
 using BasicApp.Core.Utils.Messages;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -13,11 +14,13 @@ namespace BasicApp.Core.Business.ViewModels.Historie
     {
         private readonly IDatabaseService _databaseService;
         private readonly IMvxMessenger _mvxMessenger;
+        private readonly IMvxNavigationService _navigationService;
 
-        public HistorieViewModel(IDatabaseService databaseService, IMvxMessenger mvxMessenger)
+        public HistorieViewModel(IDatabaseService databaseService, IMvxMessenger mvxMessenger, IMvxNavigationService navigationService)
         {
             _databaseService = databaseService;
             _mvxMessenger = mvxMessenger;
+            _navigationService = navigationService;
         }
 
         public override Task Initialize()
@@ -47,22 +50,9 @@ namespace BasicApp.Core.Business.ViewModels.Historie
             }
         }
 
-        public IMvxCommand OpenTrainingCommand
+        public void SelectItemExecution(Training training)
         {
-            get
-            {
-                return new MvxCommand<object>((e) =>
-                {
-                    Navigate<TrainingViewModel>();
-                });
-            }
-        }
-
-        public IMvxAsyncCommand TestAsyncCommand => new MvxAsyncCommand(async () => await TestAsyncCommandMethod());
-
-        private async Task TermostatSignin()
-        {
-            //await some stuff
+            _navigationService.Navigate(new TrainingViewModel(training));
         }
     }
 }

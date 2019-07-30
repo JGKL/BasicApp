@@ -4,7 +4,8 @@ namespace BasicApp.Core.Business.Models
 {
     public class Training
     {
-        public DateTime Datum { get; set; }
+        public int Id { get; set; }
+        public DateTime Datum { get; set; } = DateTime.Now;
         public string Programma { get; set; }
         public string Tempo { get; set; }
         public string Hartslag { get; set; }
@@ -14,6 +15,6 @@ namespace BasicApp.Core.Business.Models
         public string Opmerkingen { get; set; }
 
         public string NextIcon => "fa-caret-right";
-        public string DateIcon => "fa-calendar-o"; 
+        public string DateIcon => "fa-calendar-o";
     }
 }

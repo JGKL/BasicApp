@@ -3,6 +3,11 @@
     <bool name="IsTablet">false</bool>
     <string name="DrawerOpen">Open</string>
     <string name="DrawerClosed">Sluiten</string>
-  <string name="calendar">&#xF073;</string>
-  <string name="Hint">Programma</string>
+    <string name="calendar">&#xF073;</string>
+    <string name="Hint">Programma</string>
+
+    <!--
+      Transitions
+    -->
+    <string name="transition_list_item_icon">anim_image</string>
 </resources>

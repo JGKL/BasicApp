@@ -1,24 +1,18 @@
 ﻿using MvvmCross.Droid.Support.V7.AppCompat;
-using MvvmCross.Platforms.Android;
-using MvvmCross;
 using Android.OS;
+using Android.Views;
 
 namespace BasicApp.Droid.Views
 {
     public class BaseActivity : MvxAppCompatActivity
     {
-        private readonly IMvxAndroidCurrentTopActivity _topActivity;
-
-        public BaseActivity()
-        {
-            _topActivity = Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>();
-        }
+        public BaseActivity() { }
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeModule());
-            Window.SetSoftInputMode(Android.Views.SoftInput.AdjustPan);
+            Window.SetSoftInputMode(SoftInput.AdjustPan);
         }
 
         protected override void OnStart()

@@ -1,172 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:local="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/addTrainingFormContainer"
 	android:orientation="vertical"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:columnCount="3"
-    android:rowCount="7"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:clickable="true"
+	android:focusable="true"
+	android:focusableInTouchMode="true"
 	android:background="@color/white">
-	<TextView
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-		android:layout_marginTop="10dp"
-		android:layout_column="0"
-		android:layout_row="0"
-		android:layout_columnSpan="3"
-		android:padding="10dp"
-		android:textColor="@color/black"
-		android:textAlignment="center"
-		android:id="@+id/training_datum"
-		local:MvxBind="Text Datum, Converter=DateTime" />
+	<FrameLayout
+		android:id="@+id/datumTextInputContainer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/datumTextInputLayout"
+			style="@style/TextInputLayoutStyle"
+			android:theme="@style/TextInputLayoutTheme"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginBottom="15dp"
+			android:layout_marginTop="15dp">
+			<android.support.design.widget.TextInputEditText
+				android:id="@+id/datumTextInputEditText"
+				style="@style/TextInputEditText"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:drawablePadding="10dp"
+				android:singleLine="true"
+				android:clickable="true"
+				android:editable="false"
+				local:MvxBind="Text Datum, Converter=DateTimeToReadableString"
+				android:hint="Datum" />
+		</android.support.design.widget.TextInputLayout>
+	</FrameLayout>
 	<android.support.design.widget.TextInputLayout
+		android:id="@+id/programmaTextInputLayout"
+		style="@style/TextInputLayoutStyle"
+		android:theme="@style/TextInputLayoutTheme"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-		android:layout_marginTop="10dp"
-		android:layout_column="0"
-		android:layout_row="1"
-		android:layout_columnSpan="3"
-		android:textColorHint="@color/grey"
-		android:theme="@style/HintText">
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginBottom="15dp">
 		<android.support.design.widget.TextInputEditText
+			android:id="@+id/programmaTextInputEditText"
+			style="@style/TextInputEditText"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			android:theme="@style/EditText"
+			android:singleLine="true"
 			android:hint="Programma"
-			local:MvxBind="Text Training.Programma"
-			android:textCursorDrawable="@null" />
-	</android.support.design.widget.TextInputLayout>
-	<android.support.design.widget.TextInputLayout
-		android:layout_columnWeight="1"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="5dp"
-		android:layout_column="0"
-		android:layout_row="2"
-		android:textColorHint="@color/grey"
-		android:theme="@style/HintText">
-		<android.support.design.widget.TextInputEditText
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:theme="@style/EditText"
-			android:hint="Tempo"
-			local:MvxBind="Text Training.Tempo"
-			android:textCursorDrawable="@null" />
-	</android.support.design.widget.TextInputLayout>
-	<android.support.design.widget.TextInputLayout
-		android:layout_columnWeight="1"
-		android:layout_marginLeft="5dp"
-		android:layout_marginRight="5dp"
-		android:layout_column="1"
-		android:layout_row="2"
-		android:textColorHint="@color/grey"
-		android:theme="@style/HintText">
-		<EditText
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:theme="@style/EditText"
-			android:hint="Hartslag"
-			local:MvxBind="Text Training.Hartslag"
-			android:textCursorDrawable="@null" />
-	</android.support.design.widget.TextInputLayout>
-	<android.support.design.widget.TextInputLayout
-		android:layout_columnWeight="1"
-		android:layout_marginLeft="5dp"
-		android:layout_marginRight="10dp"
-		android:layout_column="2"
-		android:layout_row="2"
-		android:textColorHint="@color/grey"
-		android:theme="@style/HintText">
-		<EditText	
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:theme="@style/EditText"
-			android:hint="Kilometers"
-			local:MvxBind="Text Training.Kilometers"
-			android:textCursorDrawable="@null" />
-	</android.support.design.widget.TextInputLayout>
-	<android.support.design.widget.TextInputLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_columnSpan="3"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-		android:layout_row="3"
-		android:layout_column="0"
-		android:textColorHint="@color/grey"
-		android:theme="@style/HintText">
-		<EditText
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:theme="@style/EditText"
-			android:hint="Tijden"
-			local:MvxBind="Text Training.Tijden"
-			android:textCursorDrawable="@null" />
-	</android.support.design.widget.TextInputLayout>
-	<android.support.design.widget.TextInputLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_columnSpan="3"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-		android:layout_row="4"
-		android:layout_column="0"
-		android:textColorHint="@color/grey"
-		android:theme="@style/HintText">
-		<EditText
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:theme="@style/EditText"
-			android:hint="Gevoel"
-			local:MvxBind="Text Training.Gevoel"
-			android:textCursorDrawable="@null" />
-	</android.support.design.widget.TextInputLayout>
-	<android.support.design.widget.TextInputLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_columnSpan="3"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-		android:layout_row="5"
-		android:layout_column="0"
-		android:textColorHint="@color/grey"
-		android:theme="@style/HintText">
-		<EditText
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:theme="@style/EditText"
-			android:hint="Opmerkingen"
-			local:MvxBind="Text Training.Opmerkingen"
-			android:textCursorDrawable="@null" />
+			local:MvxBind="Text Programma" />
 	</android.support.design.widget.TextInputLayout>
 	<FrameLayout
-		android:layout_columnSpan="3"
-		android:layout_width="fill_parent"
-		android:layout_height="40dp"
-		android:layout_row="6"
-		android:layout_column="0"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:clickable="true"
+		android:layout_width="150dp"
+		android:layout_height="48dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginLeft="15dp"
+		android:clickable="true"
+		android:layout_gravity="right"
 		android:id="@+id/saveButton"
 		local:MvxBind="Click OpslaanCommand"
-        android:background="@drawable/rounded_rectangle">
-        <TextView
+		android:background="@drawable/rounded_rectangle">
+		<TextView
 			android:textAlignment="center"
-            android:textAllCaps="true"
-            android:text="Opslaan"
-            android:textSize="17dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/beginTitle"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent" />
-    </FrameLayout>
-</GridLayout>
+			android:text="Volgende"
+			android:textSize="17dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/beginTitle"
+			android:textColor="@color/black"
+			android:layout_gravity="center"
+			android:background="@android:color/transparent" />
+	</FrameLayout>
+</LinearLayout>

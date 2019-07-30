@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionName="1.0" package="com.basicapp.droid" android:versionCode="1">
-	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="28" />
 	<application android:label="BasicApp.Android" android:theme="@style/AppTheme" android:icon="@drawable/Icon"></application>
 </manifest>
