@@ -1,13 +1,18 @@
 ﻿using System;
 using Android.OS;
+using Android.Support.Design.Widget;
+using Android.Support.V4.Content;
 using Android.Support.V4.View;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using BasicApp.Core.Business.Enum;
 using BasicApp.Core.Business.ViewModels.Historie;
+using BasicApp.Droid.Utilities.FontAwesome;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
+using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BasicApp.Droid.Views.Historie
 {
@@ -28,6 +33,12 @@ namespace BasicApp.Droid.Views.Historie
                 recyclerView.Adapter = adapter;
             }
 
+            var floatingActionButton = view.FindViewById<FloatingActionButton>(Resource.Id.addTrainingFloatingActionButton);
+
+            var icon = new IconDrawable(Activity, '\uf0ae', FontAwesomeModule.Solid).Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
+            icon.SizeDp(40);
+            floatingActionButton.SetImageDrawable(icon);
+            
             return view;
         }
 

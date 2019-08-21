@@ -5,10 +5,11 @@ using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
+using BasicApp.Core.Business.Enum;
 using BasicApp.Core.Business.ViewModels;
+using BasicApp.Droid.Utilities.FontAwesome;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
-using Plugin.Iconize.Droid.Controls;
 using System;
 using static Android.Views.View;
 
@@ -41,7 +42,7 @@ namespace BasicApp.Droid.Views.Training
             var programmaTextInputEditText = view.FindViewById<TextInputEditText>(Resource.Id.programmaTextInputEditText);
             programmaTextInputEditText.OnFocusChangeListener = this;
 
-            var dateIcon = new IconDrawable(view.Context, "fa-calendar-o");
+            var dateIcon = new IconDrawable(Context, '\uf2b9', FontAwesomeModule.Regular);
             dateIcon.SizeDp(24);
             dateIcon.Color(Resource.Color.darkRed);
             datumTextInputEditText.SetCompoundDrawablesWithIntrinsicBounds(null, null, dateIcon, null);

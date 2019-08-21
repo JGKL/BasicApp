@@ -19,8 +19,6 @@ namespace BasicApp.Droid
 
             UserDialogs.Init(this);
 
-            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeModule());
-
             switch (Resources.DisplayMetrics.DensityDpi)
             {
                 case Android.Util.DisplayMetricsDensity.Low:

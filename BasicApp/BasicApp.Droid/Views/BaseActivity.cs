@@ -11,7 +11,6 @@ namespace BasicApp.Droid.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeModule());
             Window.SetSoftInputMode(SoftInput.AdjustPan);
         }
 
