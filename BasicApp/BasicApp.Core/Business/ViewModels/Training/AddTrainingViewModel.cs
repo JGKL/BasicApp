@@ -11,12 +11,10 @@ namespace BasicApp.Core.Business.ViewModels
 {
     public class AddTrainingViewModel : BaseViewModel
     {
-        private readonly IDatabaseService _databaseService;
         private readonly IMvxMessenger _mvxMessenger;
 
-        public AddTrainingViewModel(IDatabaseService databaseService, IMvxMessenger mvxMessenger)
+        public AddTrainingViewModel(IMvxMessenger mvxMessenger)
         {
-            _databaseService = databaseService;
             _mvxMessenger = mvxMessenger;
         }
 
@@ -51,7 +49,8 @@ namespace BasicApp.Core.Business.ViewModels
                         Programma = Programma
                     };
 
-                    _databaseService.Insert(training);
+                    //_databaseService.Insert(training);
+
                     _mvxMessenger.Publish(new TrainingMessage(this));
                 });
             }

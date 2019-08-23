@@ -1,8 +1,8 @@
 ﻿using BasicApp.Business.Services;
 using BasicApp.Business.ViewModels;
 using BasicApp.Core.Business.Models;
+using BasicApp.Core.ServiceAccess.Agents;
 using BasicApp.Core.Utils.Messages;
-using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
 using System.Collections.ObjectModel;
@@ -12,31 +12,27 @@ namespace BasicApp.Core.Business.ViewModels.Historie
 {
     public class HistorieViewModel : BaseViewModel
     {
-        private readonly IDatabaseService _databaseService;
         private readonly IMvxMessenger _mvxMessenger;
         private readonly IMvxNavigationService _navigationService;
+        private readonly ITrainingenServiceAgent _trainingenServiceAgent;
 
-        public HistorieViewModel(IDatabaseService databaseService, IMvxMessenger mvxMessenger, IMvxNavigationService navigationService)
+        public HistorieViewModel(IMvxMessenger mvxMessenger, IMvxNavigationService navigationService, ITrainingenServiceAgent trainingenServiceAgent)
         {
-            _databaseService = databaseService;
             _mvxMessenger = mvxMessenger;
             _navigationService = navigationService;
+            _trainingenServiceAgent = trainingenServiceAgent;
         }
 
-        public override Task Initialize()
+        public override async Task Initialize()
         {
-            var trainingen = _databaseService.GetCollection<Training>();
+            var trainingen = await _trainingenServiceAgent.GetTrainingen();
             Trainingen = new ObservableCollection<Training>(trainingen);
 
-            _mvxMessenger.Subscribe<TrainingMessage>(OnTrainingenChanged);
-
-            return Task.CompletedTask;
-        }
-
-        private void OnTrainingenChanged(TrainingMessage trainingMessage)
-        {
-            var trainingen = _databaseService.GetCollection<Training>();
-            Trainingen = new ObservableCollection<Training>(trainingen);
+            _mvxMessenger.Subscribe<TrainingMessage>(async (TrainingMessage trainingMessage) => 
+            {
+                var newTrainingen = await _trainingenServiceAgent.GetTrainingen();
+                Trainingen = new ObservableCollection<Training>(newTrainingen);
+            });
         }
 
         private ObservableCollection<Training> _trainingen;

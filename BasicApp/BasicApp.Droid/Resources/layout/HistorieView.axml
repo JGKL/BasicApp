@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-	android:background="@color/lightGrey"
+	android:background="@color/white"
     android:orientation="vertical">
     <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
         android:id="@+id/trainingen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-		android:divider="@android:color/transparent"
+		android:divider="@color/grey"
 		android:dividerHeight="2dp"
         local:MvxBind="ItemsSource Trainingen"
         local:MvxItemTemplate="@layout/traininglistitem" />
@@ -19,6 +19,7 @@
         android:id="@+id/addTrainingFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:layout_margin="16dp" />
 </RelativeLayout>

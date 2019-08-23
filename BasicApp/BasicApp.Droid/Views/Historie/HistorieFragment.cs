@@ -35,7 +35,7 @@ namespace BasicApp.Droid.Views.Historie
 
             var floatingActionButton = view.FindViewById<FloatingActionButton>(Resource.Id.addTrainingFloatingActionButton);
 
-            var icon = new IconDrawable(Activity, '\uf0ae', FontAwesomeModule.Solid).Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
+            var icon = new IconDrawable(Activity, '\uf067', FontAwesomeModule.Solid).Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
             icon.SizeDp(40);
             floatingActionButton.SetImageDrawable(icon);
             
