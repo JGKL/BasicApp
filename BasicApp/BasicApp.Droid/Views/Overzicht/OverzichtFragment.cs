@@ -1,7 +1,6 @@
 ﻿using Android.OS;
 using Android.Views;
-using BasicApp.Core.Business.ViewModels.Overzicht;
-using Com.Airbnb.Lottie;
+using BasicApp.Core.Business.ViewModels;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 
@@ -13,11 +12,6 @@ namespace BasicApp.Droid.Views.Overzicht
         {
             base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(Resource.Layout.OverzichtView, null);
-
-            var animationView = view.FindViewById<LottieAnimationView>(Resource.Id.animation_view);
-            animationView.SetAnimation("loader.json");
-            animationView.Loop(true);
-            animationView.PlayAnimation();
 
             return view;
         }

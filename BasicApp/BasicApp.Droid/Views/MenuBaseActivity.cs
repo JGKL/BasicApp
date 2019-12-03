@@ -15,13 +15,10 @@ namespace BasicApp.Droid.Views
         private ActionBarDrawerToggle _drawerToggle;
         private MvxListView _drawerListView;
         private DrawerLayout _drawerLayout;
-        private Bundle _bundle;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            _bundle = bundle;
 
             SetContentView(Resource.Layout.FragmentContainer);
 
@@ -35,6 +32,7 @@ namespace BasicApp.Droid.Views
 
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayShowTitleEnabled(false);
 
             _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawerLayout);
             _drawerToggle = new ActionBarDrawerToggle(this, _drawerLayout, Resource.String.DrawerOpen, Resource.String.DrawerClosed)

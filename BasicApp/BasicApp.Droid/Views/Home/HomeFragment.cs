@@ -7,19 +7,21 @@ using System.Collections.Generic;
 using BasicApp.Business.ViewModels;
 using Android.Support.Design.Widget;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
-using BasicApp.Core.Business.ViewModels.Historie;
-using BasicApp.Core.Business.ViewModels.Overzicht;
 using BasicApp.Droid.Views.Overzicht;
 using BasicApp.Droid.Views.Historie;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using BasicApp.Droid.Utilities.FontAwesome;
 using BasicApp.Core.Business.Enum;
+using MvvmCross.ViewModels;
+using BasicApp.Core.Business.ViewModels;
 
 namespace BasicApp.Droid.Views.Home
 {
-    [MvxFragmentPresentation(typeof(MenuViewModel), Resource.Id.contentFrame)]
-    public class HomeFragment : MvxFragment<HomeViewModel>
+    [MvxFragmentPresentation(typeof(MenuViewModel), Resource.Id.contentFrame, IsCacheableFragment = true)]
+    public class HomeFragment : MvxFragment<HomeViewModel>, TabLayout.IOnTabSelectedListener
     {
+        private TabLayout _tabLayout;
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
@@ -28,20 +30,38 @@ namespace BasicApp.Droid.Views.Home
             var viewPager = view.FindViewById<ViewPager>(Resource.Id.viewPager);
             var fragments = new List<MvxViewPagerFragmentInfo>
             {
-                new MvxViewPagerFragmentInfo("Historie", "tab1", typeof(HistorieFragment), typeof(HistorieViewModel)),
-                new MvxViewPagerFragmentInfo("Overzicht", "tab2", typeof(OverzichtFragment), typeof(OverzichtViewModel)),
+                new MvxViewPagerFragmentInfo("Trainingen", "tab1", typeof(HistorieFragment), new MvxViewModelRequest(typeof(HistorieViewModel))),
+                new MvxViewPagerFragmentInfo("Programma", "tab2", typeof(OverzichtFragment), new MvxViewModelRequest(typeof(HistorieViewModel))),
             };
-            var viewPagerAdapter = new MvxFragmentStatePagerAdapter(Context, ChildFragmentManager, fragments);
+            var viewPagerAdapter = new MvxCachingFragmentStatePagerAdapter(Context, ChildFragmentManager, fragments);
             viewPager.Adapter = viewPagerAdapter;
-            viewPager.SetCurrentItem(1, false);
+            viewPager.SetCurrentItem(0, false);
 
-            var tabLayout = view.FindViewById<TabLayout>(Resource.Id.tabLayout);
-            tabLayout.SetupWithViewPager(viewPager);
+            _tabLayout = view.FindViewById<TabLayout>(Resource.Id.tabLayout);
+            _tabLayout.SetupWithViewPager(viewPager);
+            _tabLayout.SetSelectedTabIndicatorColor(ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
+            _tabLayout.SetTabTextColors(ContextCompat.GetColor(Activity, Resource.Color.lightGrey), ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
 
-            tabLayout.GetTabAt(0).SetIcon(new IconDrawable(Activity, '\uf0ae', FontAwesomeModule.Solid).Color(ContextCompat.GetColor(Activity, Resource.Color.white)).SizeDp(30));
-            tabLayout.GetTabAt(1).SetIcon(new IconDrawable(Context, '\uf2b9', FontAwesomeModule.Solid).Color(ContextCompat.GetColor(Context, Resource.Color.primaryColor)).SizeDp(30));
+            _tabLayout.GetTabAt(0).SetIcon(new IconDrawable(Activity, '\uf0ae', FontModule.FontAwesomeSolid).Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor)).SizeDp(30));
+            _tabLayout.GetTabAt(1).SetIcon(new IconDrawable(Context, '\uf2b9', FontModule.FontAwesomeSolid).Color(ContextCompat.GetColor(Context, Resource.Color.white)).SizeDp(30));
+
+            _tabLayout.AddOnTabSelectedListener(this);
 
             return view;
+        }
+
+        public void OnTabReselected(TabLayout.Tab tab) { }
+
+        public void OnTabSelected(TabLayout.Tab tab)
+        {
+            var activatedIcon = tab.Icon as IconDrawable;
+            activatedIcon.Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
+        }
+
+        public void OnTabUnselected(TabLayout.Tab tab)
+        {
+            var nonActiveIcon = tab.Icon as IconDrawable;
+            nonActiveIcon.Color(ContextCompat.GetColor(Activity, Resource.Color.lightGrey));
         }
     }
 }

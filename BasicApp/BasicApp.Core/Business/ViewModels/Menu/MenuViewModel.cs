@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BasicApp.Business.ViewModels.Shared;
+using BasicApp.Core.Business.ViewModels;
 using BasicApp.Interfaces;
 using MvvmCross.Commands;
 
@@ -32,7 +33,9 @@ namespace BasicApp.Business.ViewModels
         {
             MenuItems = new List<object>
             {
-                new MenuHeaderViewModel("Michael Scott", string.Empty)
+                new MenuHeaderViewModel("Jesse Klamer", string.Empty),
+                new MenuItemViewModel("Mijn team", new TeamViewModel()),
+                new MenuItemViewModel("Instellingen", new InstellingenViewModel())
             };
         }
 

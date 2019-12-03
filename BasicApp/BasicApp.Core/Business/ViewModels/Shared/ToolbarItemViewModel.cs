@@ -1,4 +1,4 @@
-﻿namespace BasicApp.Business.ViewModels
+﻿namespace BasicApp.Business.ViewModels.Shared
 {
     public  class ToolbarItemViewModel
     {

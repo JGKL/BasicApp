@@ -51,15 +51,19 @@ namespace BasicApp.Droid.Utilities.FontAwesome
         /// </summary>
         /// <param name="context">Your activity or application context.</param>
         /// <param name="icon">The icon you want this drawable to display.</param>
-        public IconDrawable(Context context, char iconUnicode, FontAwesomeModule module)
+        public IconDrawable(Context context, char iconUnicode, FontModule module)
         {
             Typeface typeface = null;
-            if (module == FontAwesomeModule.Brands)
+            if (module == FontModule.FontAwesomeBrands)
                 typeface = FontHelper.Get(context, "fontawesome-regular-brands.otf");
-            else if (module == FontAwesomeModule.Regular)
+            else if (module == FontModule.FontAwesomeRegular)
                 typeface = FontHelper.Get(context, "fontawesome-regular.ttf");
-            else if (module == FontAwesomeModule.Solid)
+            else if (module == FontModule.FontAwesomeSolid)
                 typeface = FontHelper.Get(context, "fontawesome-solid.otf");
+            else if (module == FontModule.Ico)
+                typeface = FontHelper.Get(context, "icofont.ttf");
+            else if (module == FontModule.IcoSports)
+                typeface = FontHelper.Get(context, "icofont-sports.ttf");
 
             if (typeface == null)
                 throw new Exception("Typeface not found");

@@ -1,9 +1,8 @@
 ﻿using MvvmCross.ViewModels;
-using System;
 
 namespace BasicApp.Business.ViewModels.Shared
 {
-    public class MenuItemViewModel : BaseViewModel
+    public class MenuItemViewModel
     {
         public MenuItemViewModel(string label, IMvxViewModel viewModel, string icon = "")
         {
@@ -15,5 +14,6 @@ namespace BasicApp.Business.ViewModels.Shared
         public string Label { get; private set; }
         public IMvxViewModel ViewModel { get; private set; }
         public string Icon { get; private set; }
+
     }
 }

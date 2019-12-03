@@ -1,4 +1,5 @@
-﻿using MvvmCross;
+﻿using BasicApp.Business.ViewModels.Shared;
+using MvvmCross;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System.Collections.Generic;

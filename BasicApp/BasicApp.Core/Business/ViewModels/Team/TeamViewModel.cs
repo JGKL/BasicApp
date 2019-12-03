@@ -2,9 +2,9 @@
 
 namespace BasicApp.Core.Business.ViewModels
 {
-    public class OverzichtViewModel : BaseViewModel
+    public class TeamViewModel : BaseViewModel
     {
-        public OverzichtViewModel()
+        public TeamViewModel()
         {
 
         }

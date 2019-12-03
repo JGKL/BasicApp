@@ -1,18 +1,23 @@
 ﻿using System;
+using Android.Graphics;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Content;
-using Android.Support.V4.View;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using BasicApp.Core.Business.Enum;
-using BasicApp.Core.Business.ViewModels.Historie;
+using BasicApp.Core.Business.ViewModels;
+using BasicApp.Droid.Utilities.Controls;
 using BasicApp.Droid.Utilities.FontAwesome;
+using BasicApp.Droid.Views.Training;
+using Com.Airbnb.Lottie;
+using Com.Airbnb.Lottie.Value;
+using Java.Lang;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
-using MvvmCross.Platforms.Android.Presenters.Attributes;
+using static Android.Views.View;
 
 namespace BasicApp.Droid.Views.Historie
 {
@@ -23,106 +28,47 @@ namespace BasicApp.Droid.Views.Historie
             base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(Resource.Layout.HistorieView, null);
 
-            var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.trainingen);
+            var recyclerView = view.FindViewById<LineDividedRecyclerView>(Resource.Id.trainingen);
             if (recyclerView != null)
             {
                 var layoutManager = new LinearLayoutManager(Activity);
                 recyclerView.SetLayoutManager(layoutManager);
-                var adapter = new SelectedItemRecyclerAdapter(BindingContext as IMvxAndroidBindingContext);
-                adapter.OnItemClick += AdapterOnItemClick;
-                recyclerView.Adapter = adapter;
             }
 
             var floatingActionButton = view.FindViewById<FloatingActionButton>(Resource.Id.addTrainingFloatingActionButton);
+            floatingActionButton.Click += OnFloatingActionButtonClick;
 
-            var icon = new IconDrawable(Activity, '\uf067', FontAwesomeModule.Solid).Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
-            icon.SizeDp(40);
+            var icon = new IconDrawable(Activity, '\uf067', FontModule.FontAwesomeSolid).Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor)).SizeDp(40);
             floatingActionButton.SetImageDrawable(icon);
-            
+
+            var filterMaandTextView = view.FindViewById<TextView>(Resource.Id.filterMaandTextView);
+            filterMaandTextView.FocusChange += (object sender, View.FocusChangeEventArgs args) =>
+            {
+                if (args.HasFocus)
+                {
+                    var fragment = DatePickerFragment.NewInstance(delegate (DateTime time)
+                    {
+                        //ViewModel.Datum = time;
+                        filterMaandTextView.ClearFocus();
+                    }, delegate {
+                        filterMaandTextView.ClearFocus();
+                    });
+
+                    fragment.Show(ChildFragmentManager, "DatePicker");
+                }
+            };
+
+            var dateIcon = new IconDrawable(Context, '\uf2b9', FontModule.FontAwesomeRegular);
+            dateIcon.SizeDp(24);
+            dateIcon.Color(Resource.Color.darkRed);
+            filterMaandTextView.SetCompoundDrawablesWithIntrinsicBounds(null, null, dateIcon, null);
+
             return view;
         }
 
-        private void AdapterOnItemClick(object sender, SelectedItemRecyclerAdapter.SelectedItemEventArgs e)
+        private void OnFloatingActionButtonClick(object sender, EventArgs e)
         {
-            RelativeLayout itemLogo = e.View.FindViewById<RelativeLayout>(Resource.Id.img_date);
-            itemLogo.Tag = Activity.Resources.GetString(Resource.String.transition_list_item_icon);
-            ViewModel.SelectItemExecution(e.DataContext as Core.Business.Models.Training);
-        }
-    }
-
-    public partial class SelectedItemRecyclerAdapter : MvxRecyclerAdapter
-    {
-        public event EventHandler<SelectedItemEventArgs> OnItemClick;
-
-        public SelectedItemRecyclerAdapter(IMvxAndroidBindingContext bindingContext)
-              : base(bindingContext)
-        {
-        }
-
-        public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
-        {
-            var itemBindingContext = new MvxAndroidBindingContext(parent.Context, BindingContext.LayoutInflaterHolder);
-            View view = InflateViewForHolder(parent, viewType, itemBindingContext);
-
-            return new SelectedItemViewHolder(view, itemBindingContext, OnClick)
-            {
-                Click = ItemClick,
-                LongClick = ItemLongClick
-            };
-        }
-
-        public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
-        {
-            RelativeLayout itemLogo = holder.ItemView.FindViewById<RelativeLayout>(Resource.Id.img_date);
-            ViewCompat.SetTransitionName(itemLogo, "img_date" + position);
-
-            base.OnBindViewHolder(holder, position);
-        }
-
-        private void OnClick(int position, View view, object dataContext)
-            => OnItemClick?.Invoke(this, new SelectedItemEventArgs(position, view, dataContext));
-    }
-
-    public partial class SelectedItemRecyclerAdapter
-    {
-        public class SelectedItemViewHolder : MvxRecyclerViewHolder
-        {
-            private readonly Action<int, View, object> _listener;
-
-            public SelectedItemViewHolder(View itemView, IMvxAndroidBindingContext context, Action<int, View, object> listener)
-                : base(itemView, context)
-            {
-                _listener = listener;
-                ItemView.Click += ItemView_Click;
-            }
-
-            private void ItemView_Click(object sender, EventArgs e)
-                => _listener(AdapterPosition, ItemView, DataContext);
-
-            protected override void Dispose(bool disposing)
-            {
-                if (disposing)
-                    ItemView.Click -= ItemView_Click;
-
-                base.Dispose(disposing);
-            }
-        }
-    }
-
-    public partial class SelectedItemRecyclerAdapter
-    {
-        public class SelectedItemEventArgs : EventArgs
-        {
-            public SelectedItemEventArgs(int position, View view, object dataContext)
-            {
-                Position = position;
-                View = view;
-                DataContext = dataContext;
-            }
-
-            public int Position { get; }
-            public View View { get; }
-            public object DataContext { get; }
+            ViewModel.Navigate<AddTrainingViewModel>();
         }
     }
 }

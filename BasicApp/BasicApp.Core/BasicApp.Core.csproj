@@ -5,15 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Business\Factories\" />
+    <Folder Include="Business\Services\" />
     <Folder Include="Utils\Extensions\" />
     <Folder Include="Utils\Providers\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MvvmCross" Version="6.2.2" />
-    <PackageReference Include="MvvmCross.Plugin.Messenger" Version="6.2.2" />
+    <PackageReference Include="MvvmCross" Version="6.4.1" />
+    <PackageReference Include="MvvmCross.Plugin.File" Version="6.4.1" />
+    <PackageReference Include="MvvmCross.Plugin.Messenger" Version="6.4.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="SQLite.Net-PCL" Version="3.1.1" />
   </ItemGroup>
 
 </Project>

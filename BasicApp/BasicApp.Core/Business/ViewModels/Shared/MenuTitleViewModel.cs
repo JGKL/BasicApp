@@ -2,6 +2,11 @@
 {
     public class MenuTitleViewModel
     {
-        public string Title { get; set; }
+        public MenuTitleViewModel(string title)
+        {
+            Title = title;
+        }
+
+        public string Title { get; private set; }
     }
 }

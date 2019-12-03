@@ -1,9 +1,11 @@
 ﻿namespace BasicApp.Core.Business.Enum
 {
-    public enum FontAwesomeModule
+    public enum FontModule
     {
-        Regular,
-        Brands,
-        Solid
+        FontAwesomeRegular,
+        FontAwesomeBrands,
+        FontAwesomeSolid,
+        Ico,
+        IcoSports
     }
 }

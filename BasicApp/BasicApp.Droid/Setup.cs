@@ -3,28 +3,35 @@ using BasicApp.Droid.Services;
 using BasicApp.Interfaces;
 using MvvmCross;
 using MvvmCross.ViewModels;
-using SQLite.Net.Interop;
-using SQLite.Net.Platform.XamarinAndroid;
 using MvvmCross.Droid.Support.V7.AppCompat;
-using BasicApp.Core.Interfaces;
+using MvvmCross.IoC;
 
 namespace BasicApp.Droid
 {
-    public class Setup : MvxAppCompatSetup
+    public class Setup : MvxAppCompatSetup<App>
     {
         protected override IMvxApplication CreateApp()
         {
             return new App();
         }
 
-        protected override void InitializeIoC()
+        protected override void InitializeFirstChance()
         {
-            base.InitializeIoC();
+            base.InitializeFirstChance();
 
             Mvx.IoCProvider.RegisterSingleton<IFragmentTypeLookup>(new FragmentTypeLookup());
-            Mvx.IoCProvider.RegisterSingleton<ISQLitePlatform>(new SQLitePlatformAndroid());
             Mvx.IoCProvider.RegisterSingleton<IFileLocationService>(new FileLocationService());
-            Mvx.IoCProvider.RegisterSingleton<IPlatformInformation>(new PlatformInformation());
+        }
+
+        /**
+         * See: https://github.com/MvvmCross/MvvmCross/issues/3572
+         */
+        protected override void RegisterDefaultSetupDependencies(IMvxIoCProvider iocProvider)
+        {
+            var nameMappingStrategy = CreateViewToViewModelNaming();
+            Mvx.IoCProvider.RegisterSingleton(nameMappingStrategy);
+
+            base.RegisterDefaultSetupDependencies(iocProvider);
         }
     }
 }

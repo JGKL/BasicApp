@@ -1,54 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SplashTheme" parent="android:Theme">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/primaryColor</item>
-    </style>
+  <style name="SplashTheme" parent="android:Theme">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@color/primaryColor</item>
+  </style>
 
-    <style name="AppTheme" parent="@style/Theme.AppCompat.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="colorAccent">@color/white</item>
-        <item name="android:windowContentTransitions">true</item>
-    </style>
+  <style name="AppTheme" parent="@style/Theme.AppCompat.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="colorAccent">@color/white</item>
+    <item name="android:windowContentTransitions">true</item>
+  </style>
+  
+  <style name="SelectableItemTheme">
+    <item name="colorControlHighlight">@color/grey</item>
+  </style>
 
-    <style name="width_match_parent_max_600">
-        <item name="android:layout_width">match_parent</item>
-    </style>
+  <style name="SelectableItemBackground">
+    <item name="android:theme">@style/SelectableItemTheme</item>
+    <item name="android:background">?attr/selectableItemBackground</item>
+  </style>
 
-    <style name="SelectableItemTheme">
-        <item name="colorControlHighlight">@color/grey</item>
-    </style>
+  <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <!-- Color of the border before it is focussed -->
+    <item name="boxStrokeColor">#1e252d</item>
+    <item name="boxStrokeWidth">1dp</item>
+  </style>
 
-    <style name="SelectableItemBackground">
-        <item name="android:theme">@style/SelectableItemTheme</item>
-        <item name="android:background">?attr/selectableItemBackground</item>
-    </style>
+  <style name="TextInputLayoutTheme">
+    <!-- Color of the top floating hint label 
+         Color of the blinking | marker 
+         Color of the copy/paste actions marker -->
+    <item name="colorControlActivated">#666666</item>
 
-    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <!-- Color of the border before it is focussed -->
-        <item name="boxStrokeColor">#1e252d</item>
-        <item name="boxStrokeWidth">1dp</item>
-    </style>
+    <!-- Color of the text shown in the textfield before it has focus -->
+    <item name="android:textColorHint">#a6a9ac</item>
+  </style>
 
-    <style name="TextInputLayoutTheme">         
-      <!-- Color of the top floating hint label 
-           Color of the blinking | marker 
-           Color of the copy/paste actions marker -->
-      <item name="colorControlActivated">#666666</item>
+  <style name="TextInputEditText" parent="Theme.AppCompat.Light">
+    <item name="android:textSize">16sp</item>
+    <item name="android:paddingLeft">14dp</item>
+    <item name="android:paddingBottom">16dp</item>
+    <item name="android:paddingTop">12dp</item>
+    <item name="android:paddingRight">8dp</item>
 
-      <!-- Color of the text shown in the textfield before it has focus -->
-      <item name="android:textColorHint">#a6a9ac</item>
-    </style>
-
-    <style name="TextInputEditText" parent="Theme.AppCompat.Light">
-      <item name="android:textSize">16sp</item>
-      <item name="android:paddingLeft">14dp</item>
-      <item name="android:paddingBottom">16dp</item>
-      <item name="android:paddingTop">12dp</item>
-      <item name="android:paddingRight">8dp</item>
-      
-      <!-- Color of the filled in text 
+    <!-- Color of the filled in text 
            Color of the textfield border when it is focussed -->
-      <item name="android:textColor">#1e252d</item>
-    </style>
+    <item name="android:textColor">#1e252d</item>
+  </style>
+
+  <style name="MySeekBar" parent="Widget.AppCompat.SeekBar">
+    <item name="android:progressBackgroundTint">#1e252d</item>
+    <item name="android:thumbTint">#FF8541</item>
+    <item name="android:progressTint">#FF8541</item>
+  </style>
 </resources>
