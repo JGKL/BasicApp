@@ -11,7 +11,8 @@
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginBottom="15dp"
-        android:paddingLeft="20dp"
+        android:paddingLeft="15dp"
+        android:drawablePadding="15dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
@@ -19,24 +20,6 @@
         android:background="#ff9d66"
         android:textColor="#616161"
         android:textSize="16sp"/>
-<!--        <android.support.design.widget.TextInputLayout
-            android:id="@+id/filterMaandTextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
-            android:background="@color/transparent">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/filterMaandTextInputEditText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:clickable="true"
-                android:editable="false"
-                android:hint="Selecteer een maand"/>
-        </android.support.design.widget.TextInputLayout>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

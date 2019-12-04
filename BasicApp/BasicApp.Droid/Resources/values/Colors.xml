@@ -10,6 +10,6 @@
   <item name="darkRed" type="color">#AF000E</item>
   <item name="ripple" type="color">#CFCFCF</item>
   <item name="transparent" type="color">#00FFFFFF</item>
-  <item name="filterItemBackground" type="color">#ff9d66</item>
+  <item name="filterItemDeselected" type="color">#616161</item>
   
 </resources>

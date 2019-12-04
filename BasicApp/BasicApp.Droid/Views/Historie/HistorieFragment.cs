@@ -1,8 +1,8 @@
 ﻿using System;
-using Android.Graphics;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Content;
+using Android.Support.V4.Graphics.Drawable;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -11,13 +11,8 @@ using BasicApp.Core.Business.ViewModels;
 using BasicApp.Droid.Utilities.Controls;
 using BasicApp.Droid.Utilities.FontAwesome;
 using BasicApp.Droid.Views.Training;
-using Com.Airbnb.Lottie;
-using Com.Airbnb.Lottie.Value;
-using Java.Lang;
 using MvvmCross.Droid.Support.V4;
-using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
-using static Android.Views.View;
 
 namespace BasicApp.Droid.Views.Historie
 {
@@ -58,10 +53,10 @@ namespace BasicApp.Droid.Views.Historie
                 }
             };
 
-            var dateIcon = new IconDrawable(Context, '\uf2b9', FontModule.FontAwesomeRegular);
-            dateIcon.SizeDp(24);
-            dateIcon.Color(Resource.Color.darkRed);
-            filterMaandTextView.SetCompoundDrawablesWithIntrinsicBounds(null, null, dateIcon, null);
+            var calendarIcon = new IconDrawable(Context, '\uf133', FontModule.FontAwesomeSolid);
+            calendarIcon.SizeDp(24);
+            calendarIcon.Color(ContextCompat.GetColor(Activity, Resource.Color.filterItemDeselected));
+            filterMaandTextView.SetCompoundDrawablesWithIntrinsicBounds(calendarIcon, null, null, null);
 
             return view;
         }

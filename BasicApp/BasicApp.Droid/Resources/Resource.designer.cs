@@ -7835,7 +7835,7 @@ namespace BasicApp.Droid
 			public const int error_color_material_light = 2131034175;
 			
 			// aapt resource value: 0x7F050040
-			public const int filterItemBackground = 2131034176;
+			public const int filterItemDeselected = 2131034176;
 			
 			// aapt resource value: 0x7F050041
 			public const int foreground_material_dark = 2131034177;
