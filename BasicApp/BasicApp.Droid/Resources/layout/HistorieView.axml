@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
+        android:clickable="true"
         android:text="Selecteer een maand"
         android:background="#ff9d66"
         android:textColor="#616161"
@@ -30,7 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:textColor="@color/black"
+            android:textSize="12dp"
+            android:textColor="@color/darkGrey"
+            android:letterSpacing="0.15"
             android:text="Bekijk opgeslagen trainingen"/>
         <mvvmcross.droid.support.v4.MvxSwipeRefreshLayout
             android:id="@+id/refresher"

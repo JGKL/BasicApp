@@ -3,6 +3,7 @@ using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Content;
 using Android.Support.V4.Graphics.Drawable;
+using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -37,21 +38,7 @@ namespace BasicApp.Droid.Views.Historie
             floatingActionButton.SetImageDrawable(icon);
 
             var filterMaandTextView = view.FindViewById<TextView>(Resource.Id.filterMaandTextView);
-            filterMaandTextView.FocusChange += (object sender, View.FocusChangeEventArgs args) =>
-            {
-                if (args.HasFocus)
-                {
-                    var fragment = DatePickerFragment.NewInstance(delegate (DateTime time)
-                    {
-                        //ViewModel.Datum = time;
-                        filterMaandTextView.ClearFocus();
-                    }, delegate {
-                        filterMaandTextView.ClearFocus();
-                    });
-
-                    fragment.Show(ChildFragmentManager, "DatePicker");
-                }
-            };
+            filterMaandTextView.Click += OnFilterMaandClick;
 
             var calendarIcon = new IconDrawable(Context, '\uf133', FontModule.FontAwesomeSolid);
             calendarIcon.SizeDp(24);
@@ -64,6 +51,13 @@ namespace BasicApp.Droid.Views.Historie
         private void OnFloatingActionButtonClick(object sender, EventArgs e)
         {
             ViewModel.Navigate<AddTrainingViewModel>();
+        }
+
+        private void OnFilterMaandClick(object sender, EventArgs e)
+        {
+            var builder = new AlertDialog.Builder(Context);
+            builder.SetTitle("Selecteer een maand");
+            builder.Show();
         }
     }
 }

@@ -237,6 +237,7 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Utilities\Adapters\BaseAdapter.cs" />
     <Compile Include="Utilities\Adapters\MenuAdapter.cs" />
+    <Compile Include="Utilities\Controls\CustomDatePickerDialog.cs" />
     <Compile Include="Utilities\Controls\LineDividedRecyclerView.cs" />
     <Compile Include="Utilities\Extensions\AppCompatExtensions.cs" />
     <Compile Include="Utilities\FontAwesome\FontIconDrawable.cs" />

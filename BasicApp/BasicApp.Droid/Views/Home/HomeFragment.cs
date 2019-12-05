@@ -10,15 +10,14 @@ using MvvmCross.Platforms.Android.Binding.BindingContext;
 using BasicApp.Droid.Views.Overzicht;
 using BasicApp.Droid.Views.Historie;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
-using BasicApp.Droid.Utilities.FontAwesome;
-using BasicApp.Core.Business.Enum;
 using MvvmCross.ViewModels;
 using BasicApp.Core.Business.ViewModels;
+using Android.Graphics;
 
 namespace BasicApp.Droid.Views.Home
 {
     [MvxFragmentPresentation(typeof(MenuViewModel), Resource.Id.contentFrame, IsCacheableFragment = true)]
-    public class HomeFragment : MvxFragment<HomeViewModel>, TabLayout.IOnTabSelectedListener
+    public class HomeFragment : MvxFragment<HomeViewModel>
     {
         private TabLayout _tabLayout;
 
@@ -39,29 +38,14 @@ namespace BasicApp.Droid.Views.Home
 
             _tabLayout = view.FindViewById<TabLayout>(Resource.Id.tabLayout);
             _tabLayout.SetupWithViewPager(viewPager);
-            _tabLayout.SetSelectedTabIndicatorColor(ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
-            _tabLayout.SetTabTextColors(ContextCompat.GetColor(Activity, Resource.Color.lightGrey), ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
 
-            _tabLayout.GetTabAt(0).SetIcon(new IconDrawable(Activity, '\uf0ae', FontModule.FontAwesomeSolid).Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor)).SizeDp(30));
-            _tabLayout.GetTabAt(1).SetIcon(new IconDrawable(Context, '\uf2b9', FontModule.FontAwesomeSolid).Color(ContextCompat.GetColor(Context, Resource.Color.white)).SizeDp(30));
+            var darkGrey = ContextCompat.GetColor(Activity, Resource.Color.darkGrey);
 
-            _tabLayout.AddOnTabSelectedListener(this);
+            _tabLayout.SetSelectedTabIndicatorColor(darkGrey);
+            _tabLayout.SetTabTextColors(ContextCompat.GetColor(Activity, Resource.Color.lightGrey), darkGrey);
+            _tabLayout.SetBackgroundColor(new Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor)));
 
             return view;
-        }
-
-        public void OnTabReselected(TabLayout.Tab tab) { }
-
-        public void OnTabSelected(TabLayout.Tab tab)
-        {
-            var activatedIcon = tab.Icon as IconDrawable;
-            activatedIcon.Color(ContextCompat.GetColor(Activity, Resource.Color.primaryColor));
-        }
-
-        public void OnTabUnselected(TabLayout.Tab tab)
-        {
-            var nonActiveIcon = tab.Icon as IconDrawable;
-            nonActiveIcon.Color(ContextCompat.GetColor(Activity, Resource.Color.lightGrey));
         }
     }
 }
